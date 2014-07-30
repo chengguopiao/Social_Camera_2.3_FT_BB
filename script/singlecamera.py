@@ -716,10 +716,15 @@ class CameraTest(unittest.TestCase):
         3.Switch to depth mode with single mode
         """
         sm.switchCaptureMode('depth')
-        tb.captureAndCheckPicCount('single')        
+        time.sleep(5)
+        tb.captureAndCheckPicCount('single') 
+        time.sleep(1)
         sm.switchCaptureMode('single')
+        time.sleep(5)
         tb.captureAndCheckPicCount('single')
+        time.sleep(1)
         sm.switchCaptureMode('depth')
+        time.sleep(5)
         tb.captureAndCheckPicCount('single')                    
         
         
@@ -733,6 +738,7 @@ class CameraTest(unittest.TestCase):
         3.capture image.
         """
         sm.switchCaptureMode('depth')
+        time.sleep(10)
         tb.captureAndCheckPicCount('single')        
        
         
