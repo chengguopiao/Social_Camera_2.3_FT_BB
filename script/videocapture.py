@@ -47,7 +47,7 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity
         '''
-        so.setCameraOption('White_Balance','auto')
+        so.setCameraOption('White Balance','auto')
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithBalanceIncandescent(self):
@@ -59,7 +59,7 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity
         '''
-        so.setCameraOption('White_Balance','incandescent')
+        so.setCameraOption('White Balance','incandescent')
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithBalanceDaylight(self):
@@ -72,7 +72,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
 
-        so.setCameraOption('White_Balance','daylight')
+        so.setCameraOption('White Balance','daylight')
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithBalanceFluorescent(self):
@@ -85,7 +85,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
 
-        so.setCameraOption('White_Balance','fluorescent')
+        so.setCameraOption('White Balance','fluorescent')
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithBalanceCloudy(self):
@@ -97,7 +97,7 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity
         '''
-        so.setCameraOption('White_Balance','cloudy-daylight')
+        so.setCameraOption('White Balance','cloudy-daylight')
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithExposureAuto(self):
@@ -234,7 +234,7 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity 
         '''
-        so.setCameraOption('Geo_Location','on')
+        so.setCameraOption('Geo Location','on')
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoWithGeoLocationOff(self):
@@ -246,7 +246,7 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity 
         '''
-        so.setCameraOption('Geo_Location','off')
+        so.setCameraOption('Geo Location','off')
         tb.captureAndCheckPicCount('video',5)
 
     def _launchCamera(self):
