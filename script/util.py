@@ -290,7 +290,7 @@ class SetCaptureMode():
              d.click(2200,500)
              d(text = POP_MODE[mode]).click.wait()
          elif mode == 'burstfast' or mode == 'burstslow':
-             d.click(2200,500)
+             d.click(2200,1000)
              d(text = POP_MODE[mode]).click.wait()
          else:
              mode_index = CONFIRM_MODE_LIST.index(mode)
