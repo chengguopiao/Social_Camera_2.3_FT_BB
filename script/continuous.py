@@ -73,7 +73,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Flash','on')
         # step 4~5
-        tb.confirmSettingMode('Flash','on')
         tb.captureAndCheckPicCount('longclick',3)          
 
 # Test case 2
@@ -87,7 +86,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Flash','off')
         # step 4~5
-        tb.confirmSettingMode('Flash','off')
         tb.captureAndCheckPicCount('longclick',3)  
 
 # Test case 3
@@ -101,7 +99,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Flash','auto')
         # step 4~5
-        tb.confirmSettingMode('Flash','auto')
         tb.captureAndCheckPicCount('longclick',3)  
 
 # Test case 4
@@ -116,7 +113,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Exposure','0')
         # step 4~5
-        tb.confirmSettingMode('Exposure','0')
         tb.captureAndCheckPicCount('longclick',3)    
 
 # Test case 5    
@@ -130,7 +126,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Exposure','3')
         # step 4~5
-        tb.confirmSettingMode('Exposure','3')
         tb.captureAndCheckPicCount('longclick',3) 
 
 # Test case 6
@@ -144,7 +139,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Exposure','6')
         # step 4~5
-        tb.confirmSettingMode('Exposure','6')
         tb.captureAndCheckPicCount('longclick',3)         
 
 # Test case 7
@@ -159,7 +153,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Exposure','-3')
         # step 4~5
-        tb.confirmSettingMode('Exposure','-3')
         tb.captureAndCheckPicCount('longclick',3)       
 
 # Test case 8
@@ -174,7 +167,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Exposure','-6')
         # step 4~5
-        tb.confirmSettingMode('Exposure','-6')
         tb.captureAndCheckPicCount('longclick',3)
 
 # Test case 9
@@ -189,7 +181,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Exposure','0')
         # step 4~5
-        tb.confirmSettingMode('Exposure','0')
         tb.captureAndCheckPicCount('longclick',3) 
 
 # Test case 10
@@ -204,7 +195,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Scenes','sports')
         # step 4~5
-        tb.confirmSettingMode('Scenes','sports')
         tb.captureAndCheckPicCount('longclick',3)   
 
 # Test case 11
@@ -219,7 +209,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Scenes','night-portrait')
         # step 4~5
-        tb.confirmSettingMode('Scenes','night-portrait')
         tb.captureAndCheckPicCount('longclick',3) 
 
 # Test case 12
@@ -234,7 +223,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Scenes','portrait')
         # step 4~5
-        tb.confirmSettingMode('Scenes','portrait')
         tb.captureAndCheckPicCount('longclick',3) 
 
 # Test case  13
@@ -249,7 +237,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Scenes','barcode')
         # step 4~5
-        tb.confirmSettingMode('Scenes','barcode')
         tb.captureAndCheckPicCount('longclick',3) 
 
 # Test case 14
@@ -264,7 +251,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Scenes','landscape')
         # step 4~5
-        tb.confirmSettingMode('Scenes','landscape')
         tb.captureAndCheckPicCount('longclick',3) 
 
 # Test case 15
@@ -279,7 +265,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Scenes','night')
         # step 4~5
-        tb.confirmSettingMode('Scenes','night')
         tb.captureAndCheckPicCount('longclick',3) 
 
 # Test case 16
@@ -294,7 +279,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Face Detection','on')
         # step 4~5
-        tb.confirmSettingMode('Face Detection','on')
         tb.captureAndCheckPicCount('longclick',3)     
 
 # Test case 17
@@ -309,7 +293,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Picture Size','WideScreen')
         # step 4~5
-        tb.confirmSettingMode('Picture Size','WideScreen')
         tb.captureAndCheckPicCount('longclick',3)
 
 # Test case 18
@@ -324,7 +307,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Picture Size','StandardScreen')
         # step 4~5
-        tb.confirmSettingMode('Picture Size','StandardScreen')
         tb.captureAndCheckPicCount('longclick',3) 
 
 # Test case 19
@@ -339,7 +321,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Geo Location','on')
         # step 4~5
-        tb.confirmSettingMode('Geo Location','on')
         tb.captureAndCheckPicCount('longclick',3)         
 
 # Test case 20
@@ -354,7 +335,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Geo Location','off')
         # step 4~5
-        tb.confirmSettingMode('Geo Location','off')
         tb.captureAndCheckPicCount('longclick',3)  
 
 # Test case 21
@@ -368,7 +348,6 @@ class CameraTest(unittest.TestCase):
         """
         so.setCameraOption('Hints','on')
         # step 4~5
-        tb.confirmSettingMode('Hints','on')
         tb.captureAndCheckPicCount('longclick',3)          
 
 # Test case 22
@@ -382,7 +361,6 @@ class CameraTest(unittest.TestCase):
         """
         so.setCameraOption('Hints','off')
         # step 4~5
-        tb.confirmSettingMode('Hints','off')
         tb.captureAndCheckPicCount('longclick',3)     
 
 # Test case 23
@@ -396,7 +374,6 @@ class CameraTest(unittest.TestCase):
         """
         so.setCameraOption('Self Timer','0')
         # step 4~5
-        tb.confirmSettingMode('Self Timer','0')
         tb.captureAndCheckPicCount('single',3)  
 
 # Test case 24
@@ -410,7 +387,6 @@ class CameraTest(unittest.TestCase):
         """
         so.setCameraOption('Self Timer','3')
         # step 4~5
-        tb.confirmSettingMode('Self Timer','3')
         tb.captureAndCheckPicCount('single',3)
 
 # Test case 25
@@ -424,7 +400,6 @@ class CameraTest(unittest.TestCase):
         """
         so.setCameraOption('Self Timer','5')
         # step 4~5
-        tb.confirmSettingMode('Self Timer','5')
         tb.captureAndCheckPicCount('single',3)
 
 # Test case 26
@@ -438,7 +413,6 @@ class CameraTest(unittest.TestCase):
         """
         so.setCameraOption('Self Timer','10')
         # step 4~5
-        tb.confirmSettingMode('Self Timer','10')
         tb.captureAndCheckPicCount('single',3)
 
 # Test case 27
@@ -452,7 +426,6 @@ class CameraTest(unittest.TestCase):
         """    
         so.setCameraOption('ISO','iso-auto')
         # step 4~5
-        tb.confirmSettingMode('ISO','iso-auto')
         tb.captureAndCheckPicCount('longclick',3)
 
 # Test case 28
@@ -466,7 +439,6 @@ class CameraTest(unittest.TestCase):
         """
         so.setCameraOption('ISO','iso-100')
         # step 4~5
-        tb.confirmSettingMode('ISO','iso-100')
         tb.captureAndCheckPicCount('longclick',3)
 
 # Test case 29
@@ -480,7 +452,6 @@ class CameraTest(unittest.TestCase):
         """
         so.setCameraOption('ISO','iso-200')
         # step 4~5
-        tb.confirmSettingMode('ISO','iso-200')
         tb.captureAndCheckPicCount('longclick',3)
 
 # Test case 30
@@ -494,7 +465,6 @@ class CameraTest(unittest.TestCase):
         """
         so.setCameraOption('ISO','iso-400')
         # step 4~5
-        tb.confirmSettingMode('ISO','iso-400')
         tb.captureAndCheckPicCount('longclick',3)
 
 # Test case 31
@@ -508,7 +478,6 @@ class CameraTest(unittest.TestCase):
         """
         so.setCameraOption('ISO','iso-800')
         # step 4~5
-        tb.confirmSettingMode('ISO','iso-800')
         tb.captureAndCheckPicCount('longclick',3)
 
 # Test case 32
@@ -522,7 +491,6 @@ class CameraTest(unittest.TestCase):
         """
         so.setCameraOption('White Balance','auto')
         # step 4~5
-        tb.confirmSettingMode('White Balance','auto')
         tb.captureAndCheckPicCount('longclick',3)      
 
 # Test case 33
@@ -536,7 +504,6 @@ class CameraTest(unittest.TestCase):
         """
         so.setCameraOption('White Balance','incandescent')
         # step 4~5
-        tb.confirmSettingMode('White Balance','incandescent')
         tb.captureAndCheckPicCount('longclick',3)   
 
 # Test case 34
@@ -550,7 +517,6 @@ class CameraTest(unittest.TestCase):
         """
         so.setCameraOption('White Balance','daylight')
         # step 4~5
-        tb.confirmSettingMode('White Balance','daylight')
         tb.captureAndCheckPicCount('longclick',3) 
 
 # Test case 35
@@ -564,7 +530,6 @@ class CameraTest(unittest.TestCase):
         """
         so.setCameraOption('White Balance','fluorescent')
         # step 4~5
-        tb.confirmSettingMode('White Balance','fluorescent')
         tb.captureAndCheckPicCount('longclick',3)
 
 # Test case 36
@@ -578,7 +543,6 @@ class CameraTest(unittest.TestCase):
         """
         so.setCameraOption('White Balance','cloudy-daylight')
         # step 4~5
-        tb.confirmSettingMode('White Balance','cloudy-daylight')
         tb.captureAndCheckPicCount('longclick',3)
 
 # Test case 37
@@ -593,7 +557,6 @@ class CameraTest(unittest.TestCase):
         tb.switchBackOrFrontCamera('front')
         so.setCameraOption('Face Detection','off')
         # step 4~5
-        tb.confirmSettingMode('Face Detection','off')
         tb.captureAndCheckPicCount('longclick',3) 
 
 # Test case 38
@@ -608,7 +571,6 @@ class CameraTest(unittest.TestCase):
         tb.switchBackOrFrontCamera('front')
         so.setCameraOption('Face Detection','on')
         # step 4~5
-        tb.confirmSettingMode('Face Detection','on')
         tb.captureAndCheckPicCount('longclick',3)    
 
 # Test case 39
@@ -623,7 +585,6 @@ class CameraTest(unittest.TestCase):
         tb.switchBackOrFrontCamera('front')
         so.setCameraOption('Geo Location','on')
         # step 4~5
-        tb.confirmSettingMode('Geo Location','on')
         tb.captureAndCheckPicCount('longclick',3) 
 
 # Test case 40
@@ -638,7 +599,6 @@ class CameraTest(unittest.TestCase):
         tb.switchBackOrFrontCamera('front')
         so.setCameraOption('Geo Location','off')
         # step 4~5
-        tb.confirmSettingMode('Geo Location','off')
         tb.captureAndCheckPicCount('longclick',3) 
 
 # Test case 41
@@ -652,7 +612,6 @@ class CameraTest(unittest.TestCase):
         """
         so.setCameraOption('Face Detection','off')
         # step 4~5
-        tb.confirmSettingMode('Face Detection','off')
         tb.captureAndCheckPicCount('longclick',3)
 # Test case 
 
