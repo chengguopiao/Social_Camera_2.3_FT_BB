@@ -284,7 +284,7 @@ class SetCaptureMode():
        #     self._clickCaptureMode()
 
      def switchCaptureMode(self,mode):
-         d(description = 'Show switch camera mode list').click.wait()
+         d(resourceId = 'com.intel.camera22:id/mode_button').click.wait()
          time.sleep(2)
          if mode == 'smile' or mode == 'hdr':
              d.click(2200,500)
