@@ -427,29 +427,29 @@ class SetOption():
                 else:
                     #Neither higher nor lower than the target option, that means the current option is just the target one.
                     d(resourceId = 'com.intel.camera22:id/mini_layout_view').click.wait()
-        oldoption    = DICT_OPTION_NAME[newoptiontext].index(DEFAULT_OPTION[newoptiontext])
-        targetoption = DICT_OPTION_NAME[newoptiontext].index(option)
-        if oldoption != targetoption:
-            if newoptiontext == 'Video_Size':
-                time.sleep(2)
-                resultone = commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0_0.xml | grep %s' %DICT_OPTION_KEY[newoptiontext][0])
-                resulttwo = commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0_0.xml | grep %s' %DICT_OPTION_KEY[newoptiontext][1])
-                if resultone.find(option[0]) == -1 or resulttwo.find(option[1]) == -1:
-                    raise Exception('Set camera setting <' + optiontext + '> failed')
-            else:
-                if newoptiontext not in SETTINGS_0:
-                    time.sleep(2)
-                    resultoption = commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0_0.xml | grep %s' %DICT_OPTION_KEY[newoptiontext])
-                    if resultoption.find(option) == -1:
-                        raise Exception('Set camera setting <' + optiontext + '> to <' + option + '> failed')
-                else:
-                    time.sleep(2)
-                    resultoption = commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0.xml | grep %s' %DICT_OPTION_KEY[newoptiontext])
-                    if resultoption.find(option) == -1:
-                        raise Exception('Set camera setting <' + optiontext + '> to <' + option + '> failed')
-        else:
-            #If the current option is the default one, there is no need for confirmation
-            pass
+#        oldoption    = DICT_OPTION_NAME[newoptiontext].index(DEFAULT_OPTION[newoptiontext])
+#        targetoption = DICT_OPTION_NAME[newoptiontext].index(option)
+#        if oldoption != targetoption:
+#            if newoptiontext == 'Video_Size':
+#                time.sleep(2)
+#                resultone = commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0_0.xml | grep %s' %DICT_OPTION_KEY[newoptiontext][0])
+#                resulttwo = commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0_0.xml | grep %s' %DICT_OPTION_KEY[newoptiontext][1])
+#                if resultone.find(option[0]) == -1 or resulttwo.find(option[1]) == -1:
+#                    raise Exception('Set camera setting <' + optiontext + '> failed')
+#            else:
+#                if newoptiontext not in SETTINGS_0:
+#                    time.sleep(2)
+#                    resultoption = commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0_0.xml | grep %s' %DICT_OPTION_KEY[newoptiontext])
+#                    if resultoption.find(option) == -1:
+#                        raise Exception('Set camera setting <' + optiontext + '> to <' + option + '> failed')
+#                else:
+#                    time.sleep(2)
+#                    resultoption = commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0.xml | grep %s' %DICT_OPTION_KEY[newoptiontext])
+#                    if resultoption.find(option) == -1:
+#                        raise Exception('Set camera setting <' + optiontext + '> to <' + option + '> failed')
+#        else:
+#            #If the current option is the default one, there is no need for confirmation
+#            pass
 
 class TouchButton():
 
