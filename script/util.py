@@ -296,7 +296,7 @@ class SetCaptureMode():
              mode_index = CONFIRM_MODE_LIST.index(mode)
              x1=330
              x=150
-             y=x1+mode_index*x
+             y=x1+(mode_inde-1)*x
              d.click(2200,y)
              time.sleep(2)
               
