@@ -238,7 +238,7 @@ class Adb():
 
 class SetCaptureMode():
 
-    def _swipeCaptureList(self,mode): 
+#    def _swipeCaptureList(self,mode): 
 #        mode_index = CONFIRM_MODE_LIST.index(mode)    
 #        result = commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/mode_selected.xml| grep currentMode')
 #        a = str(result)
