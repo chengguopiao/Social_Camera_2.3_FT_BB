@@ -71,7 +71,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Exposure','0')
         # step 4~5
-        tb.confirmSettingMode('Exposure','0')
         tb.captureAndCheckPicCount('single',2)
 
 # Test case 2        
@@ -87,7 +86,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Exposure','3')
         # step 4~5
-        tb.confirmSettingMode('Exposure','3')
         tb.captureAndCheckPicCount('single',2)
 
 # Test case 3    
@@ -103,7 +101,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Exposure','6')
         # step 4~5
-        tb.confirmSettingMode('Exposure','6')
         tb.captureAndCheckPicCount('single',2)
 # Test case 4
     def testPerfectShotCaptureWithExposureRedOne(self):
@@ -119,7 +116,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Exposure','-3')
         # step 4~5
-        tb.confirmSettingMode('Exposure','-3')
         tb.captureAndCheckPicCount('single',2)
 
 # Test case 5
@@ -135,7 +131,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Exposure','-6')
         # step 4~5
-        tb.confirmSettingMode('Exposure','-6')
         tb.captureAndCheckPicCount('single',2)
 
 # Test case 6
@@ -151,7 +146,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Scenes','auto')
         # step 4~5
-        tb.confirmSettingMode('Scenes','auto')
         tb.captureAndCheckPicCount('single',2)
 
 # Test case 7
@@ -167,7 +161,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Scenes','sports')
         # step 4~5
-        tb.confirmSettingMode('Scenes','sports')
         tb.captureAndCheckPicCount('single',2)
 
 # Test case 8
@@ -183,7 +176,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Scenes','night-portrait')
         # step 4~5
-        tb.confirmSettingMode('Scenes','night-portrait')
         tb.captureAndCheckPicCount('single',10)       
 
 # Test case 9
@@ -199,7 +191,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Scenes','landscape')
         # step 4~5
-        tb.confirmSettingMode('Scenes','landscape')
         tb.captureAndCheckPicCount('single',2)     
 
 # Test case 10
@@ -215,7 +206,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Scenes','portrait')
         # step 4~5
-        tb.confirmSettingMode('Scenes','portrait')
         tb.captureAndCheckPicCount('single',2)       
 
 # Test case 11
@@ -232,7 +222,6 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('Scenes','night')
         # step 4~5
         time.sleep(3)
-        tb.confirmSettingMode('Scenes','night')
         tb.captureAndCheckPicCount('single',10)  
 
 # Test case 12
@@ -248,7 +237,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Scenes','barcode')
         # step 4~5
-        tb.confirmSettingMode('Scenes','barcode')
         tb.captureAndCheckPicCount('single',2) 
 
 # Test case 13
@@ -264,7 +252,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Geo Location','on')
         # step 4~5
-        tb.confirmSettingMode('Geo Location','on')
         tb.captureAndCheckPicCount('single',2)  
 
 # Test case 14
@@ -279,7 +266,6 @@ class CameraTest(unittest.TestCase):
         # step 2
         so.setCameraOption('Geo Location','off')
         # step 4~5
-        tb.confirmSettingMode('Geo Location','off')
         tb.captureAndCheckPicCount('single',2)  
 
 ####################################################################################################################
