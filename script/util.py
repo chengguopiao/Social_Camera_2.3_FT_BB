@@ -293,8 +293,6 @@ class SetCaptureMode():
              d.click(2200,500)
              d(text = POP_MODE[mode]).click.wait()
          else:
-             d(description = 'Show switch camera mode list').click.wait()
-             time.sleep(2)
              mode_index = CONFIRM_MODE_LIST.index(mode)
              x1=330
              x=150
