@@ -30,7 +30,7 @@ class CameraTest(unittest.TestCase):
         time.sleep(2)
         if d(text = 'OK').wait.exists(timeout = 3000):
             d(text = 'OK').click.wait()        
-        sm.switchCaptureMode('burstfast')
+        sm.switchCaptureMode('Burst','FAST')
 
     def tearDown(self):
         super(CameraTest,self).tearDown()
