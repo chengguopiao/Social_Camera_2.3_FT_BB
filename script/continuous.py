@@ -50,7 +50,7 @@ class CameraTest(unittest.TestCase):
         time.sleep(2)
         if  d(text = 'OK').wait.exists(timeout = 3000):
             d(text = 'OK').click.wait()
-        sm.switchCaptureMode('single')
+        sm.switchCaptureMode('Single')
 
 
     def tearDown(self):
