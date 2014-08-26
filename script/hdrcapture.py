@@ -71,7 +71,7 @@ class CameraTest(unittest.TestCase):
         a.cmd('refresh','/sdcard/DCIM/*')
         #Launch social camera
         self._launchCamera()
-        sm.switchCaptureMode('hdr')
+        sm.switchCaptureMode('Single','HDR')
 
     def tearDown(self):
     	a.cmd('pm','com.intel.camera22') #Force reset the camera settings to default
