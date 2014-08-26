@@ -44,7 +44,7 @@ class CameraTest(unittest.TestCase):
         time.sleep(2)
         if  d(text = 'OK').wait.exists(timeout = 3000):
             d(text = 'OK').click.wait()
-        sm.switchCaptureMode('panorama')   # change panorama mode
+        sm.switchCaptureMode('Panorama')   # change panorama mode
 
     def tearDown(self):
         super(CameraTest,self).tearDown()
