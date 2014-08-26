@@ -57,10 +57,10 @@ class CameraTest(unittest.TestCase):
                 3.press change mode icon then choose camera group 
         """    
         # steps 2
-        sm.switchCaptureMode('video')      # change video mode
+        sm.switchCaptureMode('Video')      # change video mode
         time.sleep(1)
         # steps 3
-        sm.switchCaptureMode('single')  # change camera mode
+        sm.switchCaptureMode('Single')  # change camera mode
         tb.confirmCameraMode('single')  # check camera mode
 
 # Test case 2
@@ -72,13 +72,13 @@ class CameraTest(unittest.TestCase):
                 3.press change mode icon then choose camera group  
         """
         # step 1  
-        sm.switchCaptureMode('hdr')    # change hdr mode
+        sm.switchCaptureMode('Single''HDR')    # change hdr mode
         time.sleep(1)
         # step 2
-        sm.switchCaptureMode('video')   # change video mode
+        sm.switchCaptureMode('Video')   # change video mode
         time.sleep(1)
         # step 3
-        sm.switchCaptureMode('single')     # change camera mode
+        sm.switchCaptureMode('Single')     # change camera mode
         # check camera mode
         tb.confirmCameraMode('single')
 
@@ -91,13 +91,13 @@ class CameraTest(unittest.TestCase):
                 3.press change mode icon then choose camera group  
         """  
         # step 1  
-        sm.switchCaptureMode('smile')    # change smile mode
+        sm.switchCaptureMode('Single','Smile')    # change smile mode
         time.sleep(1)
         # step 2
-        sm.switchCaptureMode('video')   # change video mode
+        sm.switchCaptureMode('Video')   # change video mode
         time.sleep(1)
         # step 3
-        sm.switchCaptureMode('smile')     # change camera mod
+        sm.switchCaptureMode('Single','Smile')     # change camera mod
         tb.confirmCameraMode('smile')
 # Test case 4
     def testQuickSwitchtoBurstmode(self):
@@ -108,15 +108,15 @@ class CameraTest(unittest.TestCase):
                 3.press change mode icon then choose Multi group  
         """  
         # step 1  
-        sm.switchCaptureMode('burst')    # change burst mode
+        sm.switchCaptureMode('Burst')    # change burst mode
         time.sleep(1)
         # step 2
-        sm.switchCaptureMode('panorama')   # change panorama mode
+        sm.switchCaptureMode('Panorama')   # change panorama mode
         time.sleep(1)
         # step 3
-        sm.switchCaptureMode('burst')     # change burst mode
+        sm.switchCaptureMode('Burst')     # change burst mode
         # check camera mode
-        sm.switchCaptureMode('single')        
+        sm.switchCaptureMode('Single')        
         tb.confirmCameraMode('single')        
 
 # Test case 5    
@@ -128,13 +128,13 @@ class CameraTest(unittest.TestCase):
                 3.press change mode icon then choose Multi group  
         """ 
         # step 1
-        sm.switchCaptureMode('perfectshot')    # change perfectshot mode
+        sm.switchCaptureMode('Perfect Shot')    # change perfectshot mode
         time.sleep(1) 
         # step 2
-        sm.switchCaptureMode('panorama')   # change panorama mode
+        sm.switchCaptureMode('Panorama')   # change panorama mode
         time.sleep(1)
         # step 3
-        sm.switchCaptureMode('perfectshot')    # change perfectshot mode
+        sm.switchCaptureMode('Perfect Shot')    # change perfectshot mode
         time.sleep(1)
         tb.confirmCameraMode('perfectshot') 
 
