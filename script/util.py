@@ -437,6 +437,34 @@ class SetOption():
         # else:
         #     #If the current option is the default one, there is no need for confirmation
         #     pass
+        #  get mode code 
+        currentModeStatus = commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/mode_selected.xml | grep currentMode')
+        currentModeNumber = int(currentModeStatus.split('value=\"')[1].split('\"')[0])
+
+        oldoption    = DICT_OPTION_NAME[newoptiontext].index(DEFAULT_OPTION[newoptiontext])
+        targetoption = DICT_OPTION_NAME[newoptiontext].index(option)
+        if oldoption != targetoption:
+            # if currentModeNumber is video mode
+            if currentModeNumber == 9:
+                resultone_mode_0 = commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_'+str(currentModeNumber)+'_0.xml | grep %s' %DICT_OPTION_KEY[newoptiontext][0])
+                resulttwo_mode = commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences'+str(currentModeNumber)+'.xml | grep %s' %DICT_OPTION_KEY[newoptiontext][1])
+                if resultone_mode_0.find(option[0]) == -1 or resulttwo_mode.find(option[1]) == -1:
+                    raise Exception('Set camera setting <' + optiontext + '> failed')
+
+            else:
+                if newoptiontext not in SETTINGS_0:  #SETTINGS_0 generate file with '_modenumber'
+                                                     #SETTINGS_0_0 generate file with '_modenum_0'
+                    resultoption = commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_'+str(currentModeNumber)+'_0.xml | grep %s' %DICT_OPTION_KEY[newoptiontext])
+                    currentoption = ((resultoption.split('>')[1]).split('<'))[0]
+                    if currentoption != option:
+                        raise Exception('set camera setting ' + mode + ' to ' + option + ' failed')
+                else:
+                    resultoption = commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_'+str(currentModeNumber)+'.xml | grep %s' %DICT_OPTION_KEY[newoptiontext])
+                    currentoption = ((resultoption.split('>')[1]).split('<'))[0]
+                    if currentoption != option:
+                        raise Exception('set camera setting ' + mode + ' to ' + option + ' failed')
+        else:
+            pass
 
 class TouchButton():
 
