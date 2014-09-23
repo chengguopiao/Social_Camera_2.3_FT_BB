@@ -98,7 +98,7 @@ class CameraTest(unittest.TestCase):
         time.sleep(1)
         # step 3
         sm.switchCaptureMode('Single','Smile')     # change camera mod
-        tb.confirmCameraMode('smile')
+
 # Test case 4
     def testQuickSwitchtoBurstmode(self):
         """
