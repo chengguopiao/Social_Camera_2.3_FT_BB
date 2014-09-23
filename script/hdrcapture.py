@@ -195,7 +195,9 @@ class CameraTest(unittest.TestCase):
 
     def _launchCamera(self):
         d.start_activity(component = ACTIVITY_NAME)
+        
         #When it is the first time to launch camera there will be a dialog to ask user 'remember location', so need to check
+        time.sleep(2)
         try:
             assert d(text = 'OK').wait.exists(timeout = 2000)
             d(text = 'OK').click.wait()
