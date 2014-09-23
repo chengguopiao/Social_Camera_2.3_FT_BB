@@ -72,7 +72,7 @@ class CameraTest(unittest.TestCase):
                 3.press change mode icon then choose camera group  
         """
         # step 1  
-        sm.switchCaptureMode('Single''HDR')    # change hdr mode
+        sm.switchCaptureMode('Single','HDR')    # change hdr mode
         time.sleep(1)
         # step 2
         sm.switchCaptureMode('Video')   # change video mode
