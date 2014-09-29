@@ -63,7 +63,7 @@ class CameraTest(unittest.TestCase):
         time.sleep(1)
         # steps 3
         sm.switchCaptureMode('Single')  # change camera mode
-        tb.confirmCameraMode('single')  # check camera mode
+
 
 # Test case 2
     def testQuickSwitchtoHDRmode(self):
@@ -82,7 +82,7 @@ class CameraTest(unittest.TestCase):
         # step 3
         sm.switchCaptureMode('Single')     # change camera mode
         # check camera mode
-        tb.confirmCameraMode('single')
+
 
 # Test case 3
     def testQuickSwitchtoSmileCammode(self):
@@ -100,7 +100,7 @@ class CameraTest(unittest.TestCase):
         time.sleep(1)
         # step 3
         sm.switchCaptureMode('Single','Smile')     # change camera mod
-        tb.confirmCameraMode('smile')
+
 # Test case 4
     def testQuickSwitchtoBurstmode(self):
         """
@@ -119,7 +119,7 @@ class CameraTest(unittest.TestCase):
         sm.switchCaptureMode('Burst')     # change burst mode
         # check camera mode
         sm.switchCaptureMode('Single')        
-        tb.confirmCameraMode('single')        
+
 
 # Test case 5    
     def testQuickSwitchtoPerfectShotmode(self):
@@ -138,7 +138,7 @@ class CameraTest(unittest.TestCase):
         # step 3
         sm.switchCaptureMode('Perfect Shot')    # change perfectshot mode
         time.sleep(1)
-        tb.confirmCameraMode('perfectshot') 
+
 
 # Test case 6
     def testQuickSwitchtoGallery(self):
