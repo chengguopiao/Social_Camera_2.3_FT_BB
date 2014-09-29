@@ -70,6 +70,8 @@ class CameraTest(unittest.TestCase):
         #Refresh media after delete files
         a.cmd('refresh','/sdcard/DCIM/*')
         #Launch social camera
+        if d(text = 'Skip').wait.exists(timeout = 3000):
+            d(text = 'Skip').click.wait()          
         self._launchCamera()
         sm.switchCaptureMode('Single','HDR')
 
@@ -199,6 +201,7 @@ class CameraTest(unittest.TestCase):
         try:
             assert d(text = 'OK').wait.exists(timeout = 2000)
             d(text = 'OK').click.wait()
+            
         except:
             pass
         assert d(resourceId = 'com.intel.camera22:id/mode_button').wait.exists(timeout = 3000), 'Launch camera failed in 3s'
