@@ -111,7 +111,7 @@ class CameraTest(unittest.TestCase):
         """  
         # step 1  
         sm.switchCaptureMode('Burst')    # change burst mode
-        time.sleep(1)
+        time.sleep(3)
         # step 2
         sm.switchCaptureMode('Panorama')   # change panorama mode
         time.sleep(1)
