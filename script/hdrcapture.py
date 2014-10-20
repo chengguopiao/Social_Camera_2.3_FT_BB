@@ -71,8 +71,6 @@ class CameraTest(unittest.TestCase):
         a.cmd('refresh','/sdcard/DCIM/*')
         #Launch social camera
         self._launchCamera()
-        if d(text = 'Skip').wait.exists(timeout = 3000):
-            d(text = 'Skip').click.wait() 
         sm.switchCaptureMode('Single','HDR')
 
     def tearDown(self):
