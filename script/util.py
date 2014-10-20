@@ -302,7 +302,8 @@ class SetOption():
         return optiony
 
     def _getOptionWidthAndHeight(self):
-        optionbounds = d(className = 'android.widget.RelativeLayout', index = '4').info.get('bounds')
+        optionbounds = d(resourceId = 'com.intel.camera22:id/setting_listview').info.get('bounds')
+        #optionbounds = d(className = 'android.widget.RelativeLayout', index = '4').info.get('bounds')
         optionwidth  = (optionbounds['right'] - optionbounds['left'])
         optionheight = (optionbounds['bottom'] - optionbounds['top'])
         return optionwidth, optionheight
