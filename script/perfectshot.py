@@ -47,8 +47,8 @@ class CameraTest(unittest.TestCase):
             d(text = 'Skip').click.wait()          
         if  d(text = 'OK').wait.exists(timeout = 3000):
             d(text = 'OK').click.wait()
-        else:
-            assert d(resourceId = 'com.intel.camera22:id/shutter_button'),'Launch camera failed!!'
+        if d(text = 'Skip').wait.exists(timeout = 3000):
+            d(text = 'Skip').click.wait() 
         sm.switchCaptureMode('Perfect Shot')   # change panorama mode
 
     def tearDown(self):
