@@ -28,7 +28,8 @@ class CameraTest(unittest.TestCase):
             d(text = 'Skip').click.wait()          
         if  d(text = 'OK').wait.exists(timeout = 3000):
             d(text = 'OK').click.wait()
-        assert d(resourceId = 'com.intel.camera22:id/shutter_button'),'Launch camera failed!!'
+        if d(text = 'Skip').wait.exists(timeout = 3000):
+            d(text = 'Skip').click.wait() 
         sm.switchCaptureMode('Single','Smile')
 
     def tearDown(self):
