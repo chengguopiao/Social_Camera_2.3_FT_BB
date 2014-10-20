@@ -38,6 +38,8 @@ class CameraTest(unittest.TestCase):
             d(text = 'Skip').click.wait()          
         if  d(text = 'OK').wait.exists(timeout = 3000):
             d(text = 'OK').click.wait()
+        if d(text = 'Skip').wait.exists(timeout = 3000):
+            d(text = 'Skip').click.wait() 
 
 
 
