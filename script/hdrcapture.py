@@ -196,14 +196,10 @@ class CameraTest(unittest.TestCase):
     def _launchCamera(self):
         d.start_activity(component = ACTIVITY_NAME)
         #When it is the first time to launch camera there will be a dialog to ask user 'remember location', so need to check
+        if d(text = 'OK').wait.exists(timeout = 3000):
+            d(text = 'OK').click.wait() 
         if d(text = 'Skip').wait.exists(timeout = 3000):
             d(text = 'Skip').click.wait()          
-        try:
-            assert d(text = 'OK').wait.exists(timeout = 2000)
-            d(text = 'OK').click.wait()
-            
-        except:
-            pass
         assert d(resourceId = 'com.intel.camera22:id/mode_button').wait.exists(timeout = 3000), 'Launch camera failed in 3s'
 
     def _pressBack(self,touchtimes):
