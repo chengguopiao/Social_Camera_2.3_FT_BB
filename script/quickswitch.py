@@ -34,8 +34,8 @@ class CameraTest(unittest.TestCase):
         #Step 1. Launch single capture activity
         a.cmd('launch','com.intel.camera22/.Camera')
         time.sleep(2)
-        if  d(text = 'OK').wait.exists(timeout = 3000):
-            d(text = 'OK').click.wait()
+        if  d(text = 'Yes').wait.exists(timeout = 3000):
+            d(text = 'Yes').click.wait()
         if d(text = 'Skip').wait.exists(timeout = 3000):
             d(text = 'Skip').click.wait() 
 
