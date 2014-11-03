@@ -113,6 +113,7 @@ DEFAULT_OPTION    = {'Exposure'         : Exposure[2],
                      
 ##################################################################################################################
 #TouchButton() Class variable
+ACTIVITY_NAME           = 'com.intel.camera22/.Camera'
 CONFIRM_MODE_LIST       = ['video','single','depth','panorama','burst','perfectshot']
 CPTUREBUTTON_RESOURCEID = 'com.intel.camera22:id/btn_mode'
 FRONTBACKBUTTON_DESCR   = 'com.intel.camera22:id/shortcut_mode_2'
@@ -237,6 +238,37 @@ class Adb():
     def _t_cmd(self,func):
         cmd = ADB + ' ' + func
         return subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
+    def setUpDevice(self,delAndReFlag=True):
+        #Unlock the screen if the screen is locked
+        if d(resourceId = 'com.android.keyguard:id/keyguard_selector_view_frame').wait.exists(timeout = 1000):
+            lockWindowBounds = d(resourceId = 'com.android.keyguard:id/keyguard_selector_view_frame').info.get('bounds')
+            startPoint_x = (lockWindowBounds['right']+lockWindowBounds['left'])/2
+            startPoint_y = (lockWindowBounds['bottom']+lockWindowBounds['top'])/2
+            d.swipe(startPoint_x,startPoint_y,lockWindowBounds['right'],startPoint_y)
+        if delAndReFlag:
+            #Delete all image/video files captured before
+            self.cmd('rm','/sdcard/DCIM/*')
+            #Refresh media after delete files
+            self.cmd('refresh','/sdcard/DCIM/*')
+        #Launch social camera
+        self.cmd('launch',ACTIVITY_NAME)
+        time.sleep(2)
+        #When it is the first time to launch camera there will be a dialog to ask user 'remember location', so need to check
+        if d(text = 'Yes').wait.exists(timeout = 2000):
+            d(text = 'Yes').click.wait()
+        if d(text = 'Skip').wait.exists(timeout = 2000):
+            d(text = 'Skip').click.wait()
+        assert d(resourceId = 'com.intel.camera22:id/mode_button').wait.exists(timeout = 3000), 'Launch camera failed!'
+    def tearDownDevice(self):
+        self.pressHomeKey()
+        time.sleep(1)
+        self.cmd('pm','com.intel.camera22')
+    def pressBackKey(self,times=1):
+        for i in range(times):
+            d.press('back')
+    def pressHomeKey(self,times=1):
+        for i in range(times):
+            d.press('home')
 
 class SetCaptureMode():
 
@@ -557,17 +589,17 @@ class TouchButton():
 
     def captureAndCheckPicCount(self,capturemode,delaytime=0):
         d = { 'single':'jpg', 'video':'mp4', 'smile':'jpg', 'longclick':'jpg'} 
-        beforeNo = commands.getoutput('adb shell ls /sdcard/DCIM/100ANDRO/* | grep '+ d[capturemode] +' | wc -l') #Get count before capturing
+        beforeNo = commands.getoutput('adb shell ls /sdcard/DCIM/*/* | grep '+ d[capturemode] +' | wc -l') #Get count before capturing
         if capturemode == 'video':
             self.takeVideo(delaytime)
         else:
             self.takePicture(capturemode)
         time.sleep(delaytime) #Sleep a few seconds for file saving
-        afterNo = commands.getoutput('adb shell ls /sdcard/DCIM/100ANDRO/* | grep '+ d[capturemode] +' | wc -l') #Get count after taking picture
+        afterNo = commands.getoutput('adb shell ls /sdcard/DCIM/*/* | grep '+ d[capturemode] +' | wc -l') #Get count after taking picture
         result = commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/mode_selected.xml| grep \'value="3"\'')
         if result.find('value="3"') != -1:
             if string.atoi(beforeNo) != string.atoi(afterNo) - 10:
-               raise Exception('Taking picture/video failed!')
+               raise Exception('Taking picture/video failed!'+'bn='+beforeNo+',an='+afterNo+','+d[capturemode])
         else:
             if string.atoi(beforeNo) == string.atoi(afterNo) :#If the count does not raise up after capturing, case failed
-                raise Exception('Taking picture/video failed!')
+                raise Exception('Taking picture/video failed!'+'bn='+beforeNo+',an='+afterNo+','+d[capturemode])
