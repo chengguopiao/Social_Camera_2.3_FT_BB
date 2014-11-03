@@ -26,19 +26,21 @@ ACTIVITY_NAME = PACKAGE_NAME + '/.Camera'
 class CameraTest(unittest.TestCase):
     def setUp(self):
         super(CameraTest,self).setUp()
-        self._launchCamera()
-        time.sleep(2)
-        if d(text = 'Yes').wait.exists(timeout = 3000):
-            d(text = 'Yes').click.wait()
-        if d(text = 'Skip').wait.exists(timeout = 3000):
-            d(text = 'Skip').click.wait() 
+        #self._launchCamera()
+        #time.sleep(2)
+        #if d(text = 'Yes').wait.exists(timeout = 3000):
+        #    d(text = 'Yes').click.wait()
+        #if d(text = 'Skip').wait.exists(timeout = 3000):
+        #    d(text = 'Skip').click.wait()
+        AD.setUpDevice(False)
         sm.switchCaptureMode('Burst','Slow')
 
     def tearDown(self):
         super(CameraTest,self).tearDown()
-        self._pressBack(4)
-        AD.cmd('pm','com.intel.camera22') #Force reset the camera settings to default
-        time.sleep(2)
+        #self._pressBack(4)
+        #AD.cmd('pm','com.intel.camera22') #Force reset the camera settings to default
+        #time.sleep(2)
+        AD.tearDownDevice()
 
     def testCaptureWithExposureAuto(self):
         '''
