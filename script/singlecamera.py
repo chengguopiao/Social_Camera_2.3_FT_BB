@@ -725,7 +725,7 @@ class CameraTest(unittest.TestCase):
         time.sleep(1)
         sm.switchCaptureMode('Single')
         time.sleep(5)
-        tb.captureAndCheckPicCount('Single')
+        tb.captureAndCheckPicCount('single')
         time.sleep(1)
         sm.switchCaptureMode('Depth Snapshot')
         time.sleep(5)
