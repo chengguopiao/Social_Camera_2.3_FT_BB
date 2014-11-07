@@ -13,33 +13,22 @@ import sys
 import util 
 import string
 
-AD = util.Adb()
-tb = util.TouchButton()
-so = util.SetOption()
-sm = util.SetCaptureMode()
+#Written by ZhuYanbo
 
-#Written by XuGuanjun
-
-PACKAGE_NAME  = 'com.intel.camera22'
-ACTIVITY_NAME = PACKAGE_NAME + '/.Camera'
+AD         = util.Adb()
+tb         = util.TouchButton()
+so         = util.SetOption()
+sm         = util.SetCaptureMode()
+modeNumber = util.ModeNumber['video']
 
 class CameraTest(unittest.TestCase):
     def setUp(self):
         super(CameraTest,self).setUp()
-        #self._launchCamera()
-        #time.sleep(2)
-        #if d(text = 'Yes').wait.exists(timeout = 3000):
-        #    d(text = 'Yes').click.wait()
-        #if d(text = 'Skip').wait.exists(timeout = 3000):
-        #    d(text = 'Skip').click.wait()
         AD.setUpDevice(False)
         sm.switchCaptureMode('Video')
 
     def tearDown(self):
         super(CameraTest,self).tearDown()
-        #self._pressBack(4)
-        #AD.cmd('pm','com.intel.camera22') #Force reset the camera settings to default
-        #time.sleep(2)
         AD.tearDownDevice()
 
     def testRecordVideoCaptureVideoWithBalanceAuto(self):
@@ -51,7 +40,7 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity
         '''
-        so.setCameraOption('White Balance','auto')
+        so.setCameraOption('White Balance','auto',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithBalanceIncandescent(self):
@@ -63,7 +52,7 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity
         '''
-        so.setCameraOption('White Balance','incandescent')
+        so.setCameraOption('White Balance','incandescent',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithBalanceDaylight(self):
@@ -76,7 +65,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
 
-        so.setCameraOption('White Balance','daylight')
+        so.setCameraOption('White Balance','daylight',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithBalanceFluorescent(self):
@@ -89,7 +78,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
 
-        so.setCameraOption('White Balance','fluorescent')
+        so.setCameraOption('White Balance','fluorescent',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithBalanceCloudy(self):
@@ -101,7 +90,7 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity
         '''
-        so.setCameraOption('White Balance','cloudy-daylight')
+        so.setCameraOption('White Balance','cloudy-daylight',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithExposureAuto(self):
@@ -114,7 +103,7 @@ class CameraTest(unittest.TestCase):
                 4.Touch shutter button to capture picture
                 5.Exit  activity
         '''
-        so.setCameraOption('Exposure','0')
+        so.setCameraOption('Exposure','0',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithExposure1(self):
@@ -127,7 +116,7 @@ class CameraTest(unittest.TestCase):
                 4.Touch shutter button to capture picture
                 5.Exit  activity
         '''
-        so.setCameraOption('Exposure','3')
+        so.setCameraOption('Exposure','3',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithExposure2(self):
@@ -140,7 +129,7 @@ class CameraTest(unittest.TestCase):
                 4.Touch shutter button to capture picture
                 5.Exit  activity
         '''
-        so.setCameraOption('Exposure','6')
+        so.setCameraOption('Exposure','6',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithExposureRed1(self):
@@ -153,7 +142,7 @@ class CameraTest(unittest.TestCase):
                 4.Touch shutter button to capture picture
                 5.Exit  activity
         '''
-        so.setCameraOption('Exposure','-3')
+        so.setCameraOption('Exposure','-3',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithExposureRed2(self):
@@ -166,7 +155,7 @@ class CameraTest(unittest.TestCase):
                 4.Touch shutter button to capture picture
                 5.Exit  activity
         '''
-        so.setCameraOption('Exposure','-6')
+        so.setCameraOption('Exposure','-6',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithHSSize(self):
@@ -178,7 +167,7 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity 
         '''
-        so.setCameraOption('Video Size',['true','5'])
+        so.setCameraOption('Video Size',['true','5'],modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithHDSize(self):
@@ -190,7 +179,7 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity 
         '''
-        so.setCameraOption('Video Size',['false','5'])
+        so.setCameraOption('Video Size',['false','5'],modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithSDSize(self):
@@ -202,7 +191,7 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity 
         '''
-        so.setCameraOption('Video Size',['false','4'])
+        so.setCameraOption('Video Size',['false','4'],modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithFHDSize(self):
@@ -214,7 +203,7 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity 
         '''
-        so.setCameraOption('Video Size',['false','6'])
+        so.setCameraOption('Video Size',['false','6'],modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithFHSSize(self):
@@ -226,7 +215,7 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity 
         '''
-        so.setCameraOption('Video Size',['true','6'])
+        so.setCameraOption('Video Size',['true','6'],modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoWithGeoLocationOn(self):
@@ -238,7 +227,7 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity 
         '''
-        so.setCameraOption('Geo Location','on')
+        so.setCameraOption('Geo Location','on',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoWithGeoLocationOff(self):
@@ -250,17 +239,5 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity 
         '''
-        so.setCameraOption('Geo Location','off')
+        so.setCameraOption('Geo Location','off',modeNumber)
         tb.captureAndCheckPicCount('video',5)
-
-    def _launchCamera(self):
-        d.start_activity(component = ACTIVITY_NAME)
-        time.sleep(2)
-        #When it is the first time to launch camera there will be a dialog to ask user 'remember location', so need to check
-        #if d(text = 'OK').wait.exists(timeout = 2000):
-        #    d(text = 'OK').click.wait()
-        #assert d(resourceId = 'com.intel.camera22:id/shutter_button').wait.exists(timeout = 3000), 'Launch camera failed in 3s'
-
-    def _pressBack(self,touchtimes):
-        for i in range(0,touchtimes):
-            d.press('back')

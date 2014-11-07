@@ -12,49 +12,22 @@ import sys
 import util 
 import unittest
 
-a  = util.Adb()
-sm = util.SetCaptureMode()
-tb = util.TouchButton()
-so = util.SetOption()
-#Written by Piao chengguo
+#Written by ZhuYanbo
 
-# PATH
-PATH ='/data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0_0.xml '
-PATH1='cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0.xml '
-# key
-EXPOSURE_KEY ='| grep pref_camera_exposure_key'
-IOS_KEY='| grep pref_camera_iso_key'
-LOCATION_KEY ='| grep pref_camera_geo_location_key'
-SCENE_KEY ='| grep pref_camera_scenemode_key'
-
-
-#################################
-
-PACKAGE_NAME = 'com.intel.camera22'
-ACTIVITY_NAME = PACKAGE_NAME + '/.Camera'
+a          = util.Adb()
+sm         = util.SetCaptureMode()
+tb         = util.TouchButton()
+so         = util.SetOption()
+modeNumber = util.ModeNumber['perfectshot']
 
 class CameraTest(unittest.TestCase):
     def setUp(self):
         super(CameraTest,self).setUp()
-        # rm DCIM folder and refresh from adb shell
-        #a.cmd('rm','/sdcard/DCIM/100ANDRO')
-        #a.cmd('refresh','/sdcard/DCIM/100ANDRO')
-        #Because default camera after launching is single mode, so we set this step in setUp().
-        #Step 1. Launch single capture activity
-        #a.cmd('launch','com.intel.camera22/.Camera')
-        #time.sleep(2)
-        #if  d(text = 'Yes').wait.exists(timeout = 3000):
-        #    d(text = 'Yes').click.wait()
-        #if d(text = 'Skip').wait.exists(timeout = 3000):
-        #    d(text = 'Skip').click.wait()
         a.setUpDevice()
         sm.switchCaptureMode('Perfect Shot')   # change panorama mode
 
     def tearDown(self):
         super(CameraTest,self).tearDown()
-        #4.Exit  activity
-        #self._pressBack(4)
-        #a.cmd('pm','com.intel.camera22')
         a.tearDownDevice()
 
 # PerfectShot capture 14
@@ -69,7 +42,7 @@ class CameraTest(unittest.TestCase):
         
 
         # step 2
-        so.setCameraOption('Exposure','0')
+        so.setCameraOption('Exposure','0',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('single',2)
 
@@ -84,7 +57,7 @@ class CameraTest(unittest.TestCase):
         
 
         # step 2
-        so.setCameraOption('Exposure','3')
+        so.setCameraOption('Exposure','3',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('single',2)
 
@@ -99,7 +72,7 @@ class CameraTest(unittest.TestCase):
         
 
         # step 2
-        so.setCameraOption('Exposure','6')
+        so.setCameraOption('Exposure','6',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('single',2)
 # Test case 4
@@ -114,7 +87,7 @@ class CameraTest(unittest.TestCase):
 
         # step 2
         # step 2
-        so.setCameraOption('Exposure','-3')
+        so.setCameraOption('Exposure','-3',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('single',2)
 
@@ -129,7 +102,7 @@ class CameraTest(unittest.TestCase):
         
 
         # step 2
-        so.setCameraOption('Exposure','-6')
+        so.setCameraOption('Exposure','-6',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('single',2)
 
@@ -144,7 +117,7 @@ class CameraTest(unittest.TestCase):
         
 
         # step 2
-        so.setCameraOption('Scenes','auto')
+        so.setCameraOption('Scenes','auto',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('single',2)
 
@@ -159,12 +132,12 @@ class CameraTest(unittest.TestCase):
         
 
         # step 2
-        so.setCameraOption('Scenes','sports')
+        so.setCameraOption('Scenes','sports',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('single',2)
 
 # Test case 8
-    def testPerfectShotCapturePictureWithScenesNightPortrait(self):
+    #def testPerfectShotCapturePictureWithScenesNightPortrait(self):
         """
         Summary:testCapturePictureWithScenes NightPortrait: Capture image with Scene modeNightPortrait
         Steps:  1.Launch perfect shot activity
@@ -174,9 +147,9 @@ class CameraTest(unittest.TestCase):
         
 
         # step 2
-        so.setCameraOption('Scenes','night-portrait')
+    #    so.setCameraOption('Scenes','night-portrait')
         # step 4~5
-        tb.captureAndCheckPicCount('single',10)       
+    #    tb.captureAndCheckPicCount('single',10)       
 
 # Test case 9
     def testPerfectShotCapturePictureWithScenesLandscape(self):
@@ -189,7 +162,7 @@ class CameraTest(unittest.TestCase):
         
 
         # step 2
-        so.setCameraOption('Scenes','landscape')
+        so.setCameraOption('Scenes','landscape',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('single',2)     
 
@@ -204,7 +177,7 @@ class CameraTest(unittest.TestCase):
         
 
         # step 2
-        so.setCameraOption('Scenes','portrait')
+        so.setCameraOption('Scenes','portrait',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('single',2)       
 
@@ -219,13 +192,13 @@ class CameraTest(unittest.TestCase):
         
 
         # step 2
-        so.setCameraOption('Scenes','night')
+        so.setCameraOption('Scenes','night',modeNumber)
         # step 4~5
         time.sleep(3)
         tb.captureAndCheckPicCount('single',10)  
 
 # Test case 12
-    def testPerfectShotCapturePictureWithScenesBarcode(self):
+    #def testPerfectShotCapturePictureWithScenesBarcode(self):
         """
         Summary:testCapturePictureWithScenesBarcode: Capture image with Scene mode Barcode
         Steps:  1.Launch perfect shot activity
@@ -235,9 +208,9 @@ class CameraTest(unittest.TestCase):
         
 
         # step 2
-        so.setCameraOption('Scenes','barcode')
+    #    so.setCameraOption('Scenes','barcode')
         # step 4~5
-        tb.captureAndCheckPicCount('single',2) 
+    #    tb.captureAndCheckPicCount('single',2) 
 
 # Test case 13
     def testPerfectShotCapturepictureWithGeoLocationOn(self):
@@ -250,7 +223,7 @@ class CameraTest(unittest.TestCase):
         
 
         # step 2
-        so.setCameraOption('Geo Location','on')
+        so.setCameraOption('Geo Location','on',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('single',2)  
 
@@ -264,17 +237,6 @@ class CameraTest(unittest.TestCase):
         """ 
         
         # step 2
-        so.setCameraOption('Geo Location','off')
+        so.setCameraOption('Geo Location','off',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('single',2)  
-
-####################################################################################################################
-
-    def _launchCamera(self):
-        d.start_activity(component = ACTIVITY_NAME)
-        time.sleep(1)
-        assert d(resourceId = 'com.intel.camera22:id/mode_button').wait.exists(timeout = 3000), 'Launch camera failed in 3s'
-
-    def _pressBack(self,touchtimes):
-        for i in range(1,touchtimes+1):
-            d.press('back')

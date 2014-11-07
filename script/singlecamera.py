@@ -17,25 +17,11 @@ class CameraTest(unittest.TestCase):
 
     def setUp(self):
         super(CameraTest,self).setUp()
-        # rm DCIM folder and refresh from adb shell
-        #a.cmd('rm','/sdcard/DCIM/100ANDRO')
-        #a.cmd('refresh','/sdcard/DCIM/100ANDRO')
-        #Because default camera after launching is single mode, so we set this step in setUp().
-        #Step 1. Launch single capture activity
-        #a.cmd('launch','com.intel.camera22/.Camera')
-        #time.sleep(2)
-        #if  d(text = 'Yes').wait.exists(timeout = 3000):
-        #    d(text = 'Yes').click.wait()
-        #if d(text = 'Skip').wait.exists(timeout = 3000):
-        #    d(text = 'Skip').click.wait()
         a.setUpDevice()
         sm.switchCaptureMode('Single')
 
     def tearDown(self):
         super(CameraTest,self).tearDown()
-        #4.Exit  activity
-        #self._pressBack(4)
-        #a.cmd('pm','com.intel.camera22')
         a.tearDownDevice()
 
 
@@ -101,7 +87,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('Exposure','0')
         #tb.confirmSettingMode('exposure','0')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 5
     def testCaptureSingleImageWithExposurePlusOne(self):
@@ -117,7 +103,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('Exposure','3')
         #tb.confirmSettingMode('exposure','3')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 6
     def testCaptureSingleImageWithExposurePlusTwo(self):
@@ -133,7 +119,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('Exposure','6')
         #tb.confirmSettingMode('exposure','6')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 7
     def testCaptureSingleImageWithExposureRedOne(self):
@@ -149,7 +135,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('Exposure','-3')
         #tb.confirmSettingMode('exposure','-3')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 8
     def testCaptureSingleImageWithExposureRedTwo(self):
@@ -165,7 +151,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('Exposure','-6')
         #tb.confirmSettingMode('exposure','-6')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 9
     def testCaptureSingleImageWithSceneAuto(self):
@@ -181,7 +167,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('Scenes','auto')
         #tb.confirmSettingMode('scenemode','auto')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 10
     def testCaptureSingleImageWithSceneSports(self):
@@ -197,7 +183,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('Scenes','sports')
         #tb.confirmSettingMode('scenemode','sports')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 11
     def testCaptureSingleImageWithSceneNight(self):
@@ -213,7 +199,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('Scenes','night')
         #tb.confirmSettingMode('scenemode','night')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 12
     def testCaptureSingleImageWithSceneLandscape(self):
@@ -229,7 +215,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('Scenes','landscape')
         #tb.confirmSettingMode('scenemode','landscape')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 13
     def testCaptureSingleImageWithScenePortrait(self):
@@ -245,10 +231,10 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('Scenes','portrait')
         #tb.confirmSettingMode('scenemode','portrait')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 14
-    def testCaptureSingleImageWithSceneNightPortrait(self):
+    #def testCaptureSingleImageWithSceneNightPortrait(self):
         """
         Summary:Capture image with Scene mode NightPortrait.
         Step:
@@ -258,10 +244,10 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2  Set scene mode NightPortrait
-        so.setCameraOption('Scenes','night-portrait')
+     #   so.setCameraOption('Scenes','night-portrait')
         #tb.confirmSettingMode('scenemode','night-portrait')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+    #    tb.captureAndCheckPicCount('single')
 
     # # Testcase 15
     # def testCaptureSingleImageWithSceneBarcode(self):
@@ -293,7 +279,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('Face Detection','on')
         #tb.confirmSettingMode('fdfr','on')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 17
     def testCaptureSingleImageWithFDFROff(self):
@@ -309,7 +295,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('Face Detection','off')
         #tb.confirmSettingMode('fdfr','off')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 18
     def testCaptureSingleImageWithPictureSizeWidescreen(self):
@@ -325,7 +311,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('Picture Size','WideScreen')
         #tb.confirmSettingMode('picture_size','WideScreen')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 19
     def testCaptureSingleImageWithPictureSizeStandardScreen(self):
@@ -341,7 +327,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('Picture Size','StandardScreen')
         #tb.confirmSettingMode('picture_size','StandardScreen')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 20
     def testCaptureSingleImageWithHitsOn(self):
@@ -357,7 +343,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('Hints','on')
         #tb.confirmSettingMode('hints','on')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 21
     def testCaptureSingleImageWithHitsOff(self):
@@ -373,7 +359,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('Hints','off')
         #tb.confirmSettingMode('hints','off')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 22
     def testCaptureSingleImageWithSelfTimerOff(self):
@@ -389,7 +375,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('Self Timer','0')
         #tb.confirmSettingMode('delay_shooting','0')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 23
     def testCaptureSingleImageWithSelfTimerThree(self):
@@ -453,7 +439,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('ISO','iso-auto')
         #tb.confirmSettingMode('iso','iso-auto')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 27
     def testCaptureSingleImageWithISOOneH(self):
@@ -469,7 +455,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('ISO','iso-100')
         #tb.confirmSettingMode('iso','iso-100')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 28
     def testCaptureSingleImageWithISOTwoH(self):
@@ -485,7 +471,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('ISO','iso-200')
         #tb.confirmSettingMode('iso','iso-200')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 29
     def testCaptureSingleImageWithISOFourH(self):
@@ -501,7 +487,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('ISO','iso-400')
         #tb.confirmSettingMode('iso','iso-400')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 30
     def testCaptureSingleImageWithISOEightH(self):
@@ -517,7 +503,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('ISO','iso-800')
         #tb.confirmSettingMode('iso','iso-800')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 31
     def testCaptureSingleImageWithWBAuto(self):
@@ -533,7 +519,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('White Balance','auto')
         #tb.confirmSettingMode('whitebalance','auto')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 32
     def testCaptureSingleImageWithWBIncandescent(self):
@@ -549,7 +535,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('White Balance','incandescent')
         #tb.confirmSettingMode('whitebalance','incandescent')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 33
     def testCaptureSingleImageWithWBDaylight(self):
@@ -581,7 +567,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('White Balance','fluorescent')
         #tb.confirmSettingMode('whitebalance','fluorescent')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')  
+        tb.captureAndCheckPicCount('single',2)  
 
     # Testcase 35
     def testCaptureSingleImageWithWBCloudy(self):
@@ -597,7 +583,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('White Balance','cloudy-daylight')
         #tb.confirmSettingMode('whitebalance','cloudy-daylight')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')  
+        tb.captureAndCheckPicCount('single',2)  
 
     # Testcase 36
     def testCaptureSingleImageWithLocationOn(self):
@@ -613,7 +599,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('Geo Location','on')
         #tb.confirmSettingMode('whitebalance','cloudy-daylight')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 37
     def testCaptureSingleImageWithLocationOff(self):
@@ -629,7 +615,7 @@ class CameraTest(unittest.TestCase):
         so.setCameraOption('Geo Location','off')
         #tb.confirmSettingMode('whitebalance','off')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('single')
+        tb.captureAndCheckPicCount('single',2)
 
     # Testcase 38
     def testFrontCaptureSingleImageWithLocationOn(self):
@@ -744,28 +730,3 @@ class CameraTest(unittest.TestCase):
         sm.switchCaptureMode('Depth Snapshot')
         time.sleep(10)
         tb.captureAndCheckPicCount('single')        
-       
-        
-###########################################################
-###############################################################
-    def _pressBack(self,touchtimes):
-        for i in range(1,touchtimes+1):
-            d.press('back')
-
-    def _confirmSettingMode(self,sub_mode,option):
-        if sub_mode == 'location':
-            result = a.cmd('cat','/data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0.xml | grep '+ sub_mode)
-            if result.find(option) == -1:
-                self.fail('set camera setting ' + sub_mode + ' to ' + option + ' failed')
-        else:
-            result = a.cmd('cat','/data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0_0.xml | grep ' + sub_mode)
-            if result.find(option) == -1:
-                self.fail('set camera setting ' + sub_mode + ' to ' + option + ' failed')
-
-    def _capturePictureAndConfirm(self,timer=0):
-        beforeC = a.cmd('ls','/sdcard/DCIM/100ANDRO')
-        TB.takePicture('single')
-        time.sleep(timer)
-        afterC  = a.cmd('ls','/sdcard/DCIM/100ANDRO')
-        if afterC == beforeC:
-            self.fail('take picture failed !!')

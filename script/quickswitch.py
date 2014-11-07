@@ -12,39 +12,20 @@ import sys
 import util 
 import unittest
 
+#Written by ZhuYanbo
+
 a  = util.Adb()
 sm = util.SetCaptureMode()
 tb = util.TouchButton()
 so = util.SetOption()
-#Written by Piao chengguo
-
-
-#################################
-
-PACKAGE_NAME = 'com.intel.camera22'
-ACTIVITY_NAME = PACKAGE_NAME + '/.Camera'
 
 class CameraTest(unittest.TestCase):
     def setUp(self):
         super(CameraTest,self).setUp()
-        # rm DCIM folder and refresh from adb shell
-        #a.cmd('rm','/sdcard/DCIM/100ANDRO')
-        #a.cmd('refresh','/sdcard/DCIM/100ANDRO')
-        #Because default camera after launching is single mode, so we set this step in setUp().
-        #Step 1. Launch single capture activity
-        #a.cmd('launch','com.intel.camera22/.Camera')
-        #time.sleep(2)
-        #if  d(text = 'Yes').wait.exists(timeout = 3000):
-        #    d(text = 'Yes').click.wait()
-        #if d(text = 'Skip').wait.exists(timeout = 3000):
-        #    d(text = 'Skip').click.wait()
         a.setUpDevice()
 
     def tearDown(self):
         super(CameraTest,self).tearDown()
-        #4.Exit  activity
-        #self._pressBack(4)
-        #a.cmd('pm','com.intel.camera22')
         a.tearDownDevice()
 
 # Quick Switch 6
@@ -60,9 +41,11 @@ class CameraTest(unittest.TestCase):
         # steps 2
         sm.switchCaptureMode('Video')      # change video mode
         time.sleep(1)
+        tb.confirmCameraMode(util.ConfirmMode['Video'])
         # steps 3
         sm.switchCaptureMode('Single')  # change camera mode
-
+        time.sleep(1)
+        tb.confirmCameraMode(util.ConfirmMode['Single'])
 
 # Test case 2
     def testQuickSwitchtoHDRmode(self):
@@ -75,13 +58,16 @@ class CameraTest(unittest.TestCase):
         # step 1  
         sm.switchCaptureMode('Single','HDR')    # change hdr mode
         time.sleep(1)
+        tb.confirmCameraMode(util.ConfirmMode['hdr'])
         # step 2
         sm.switchCaptureMode('Video')   # change video mode
         time.sleep(1)
+        tb.confirmCameraMode(util.ConfirmMode['Video'])
         # step 3
         sm.switchCaptureMode('Single')     # change camera mode
         # check camera mode
-
+        time.sleep(1)
+        tb.confirmCameraMode(util.ConfirmMode['Single'])
 
 # Test case 3
     def testQuickSwitchtoSmileCammode(self):
@@ -94,11 +80,15 @@ class CameraTest(unittest.TestCase):
         # step 1  
         sm.switchCaptureMode('Single','Smile')    # change smile mode
         time.sleep(1)
+        tb.confirmCameraMode(util.ConfirmMode['smile'])
         # step 2
         sm.switchCaptureMode('Video')   # change video mode
         time.sleep(1)
+        tb.confirmCameraMode(util.ConfirmMode['Video'])
         # step 3
         sm.switchCaptureMode('Single','Smile')     # change camera mod
+        time.sleep(1)
+        tb.confirmCameraMode(util.ConfirmMode['smile'])
 
 # Test case 4
     def testQuickSwitchtoBurstmode(self):
@@ -111,14 +101,19 @@ class CameraTest(unittest.TestCase):
         # step 1  
         sm.switchCaptureMode('Burst')    # change burst mode
         time.sleep(3)
+        tb.confirmCameraMode(util.ConfirmMode['Burst'])
         # step 2
         sm.switchCaptureMode('Panorama')   # change panorama mode
         time.sleep(1)
+        tb.confirmCameraMode(util.ConfirmMode['Panorama'])
         # step 3
         sm.switchCaptureMode('Burst')     # change burst mode
+        time.sleep(1)
+        tb.confirmCameraMode(util.ConfirmMode['Burst'])
         # check camera mode
-        sm.switchCaptureMode('Single')        
-
+        sm.switchCaptureMode('Single')
+        time.sleep(1)
+        tb.confirmCameraMode(util.ConfirmMode['Single'])
 
 # Test case 5    
     def testQuickSwitchtoPerfectShotmode(self):
@@ -131,13 +126,15 @@ class CameraTest(unittest.TestCase):
         # step 1
         sm.switchCaptureMode('Perfect Shot')    # change perfectshot mode
         time.sleep(1) 
+        tb.confirmCameraMode(util.ConfirmMode['Perfect Shot'])
         # step 2
         sm.switchCaptureMode('Panorama')   # change panorama mode
         time.sleep(1)
+        tb.confirmCameraMode(util.ConfirmMode['Panorama'])
         # step 3
         sm.switchCaptureMode('Perfect Shot')    # change perfectshot mode
         time.sleep(1)
-
+        tb.confirmCameraMode(util.ConfirmMode['Perfect Shot'])
 
 # Test case 6
     def testQuickSwitchtoGallery(self):
@@ -157,19 +154,3 @@ class CameraTest(unittest.TestCase):
         d.click(1200,800)
         time.sleep(1)
         assert d(resourceId = 'android:id/home').wait.exists(timeout = 3000)
-
-
-
-
-######################################
-
-
-
-    def _launchCamera(self):
-        d.start_activity(component = ACTIVITY_NAME)
-        time.sleep(1)
-        assert d(resourceId = 'com.intel.camera22:id/mode_button').wait.exists(timeout = 3000), 'Launch camera failed in 3s'
-
-    def _pressBack(self,touchtimes):
-        for i in range(1,touchtimes+1):
-            d.press('back')

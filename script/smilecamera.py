@@ -7,35 +7,21 @@ import commands
 import util
 import string
 
-a  = util.Adb()
-sm = util.SetCaptureMode()
-so = util.SetOption()
-tb = util.TouchButton()
-
+a          = util.Adb()
+sm         = util.SetCaptureMode()
+so         = util.SetOption()
+tb         = util.TouchButton()
+modeNumber = util.ModeNumber['smile']
 
 class CameraTest(unittest.TestCase):
 
     def setUp(self):
         super(CameraTest,self).setUp()
-        # rm DCIM folder and refresh from adb shell
-        #a.cmd('rm','/sdcard/DCIM/100ANDRO')
-        #a.cmd('refresh','/sdcard/DCIM/100ANDRO')
-        #Because default camera after launching is single mode, so we set this step in setUp().
-        #Step 1. Launch single capture activity
-        #a.cmd('launch','com.intel.camera22/.Camera')
-        #time.sleep(2)
-        #if  d(text = 'Yes').wait.exists(timeout = 3000):
-        #    d(text = 'Yes').click.wait()
-        #if d(text = 'Skip').wait.exists(timeout = 3000):
-        #    d(text = 'Skip').click.wait()
         a.setUpDevice()
         sm.switchCaptureMode('Single','Smile')
 
     def tearDown(self):
         super(CameraTest,self).tearDown()
-        #4.Exit  activity
-        #self._pressBack(4)
-        #a.cmd('pm','com.intel.camera22')
         a.tearDownDevice()
 
     # # Testcase 1
@@ -97,7 +83,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set exposure auto
-        so.setCameraOption('Exposure','0')
+        so.setCameraOption('Exposure','0',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -112,7 +98,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set exposure 1
-        so.setCameraOption('Exposure','3')
+        so.setCameraOption('Exposure','3',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -127,7 +113,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set exposure 2
-        so.setCameraOption('Exposure','6')
+        so.setCameraOption('Exposure','6',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -142,7 +128,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set exposure -1
-        so.setCameraOption('Exposure','-3')
+        so.setCameraOption('Exposure','-3',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -157,7 +143,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set exposure -2
-        so.setCameraOption('Exposure','-6')
+        so.setCameraOption('Exposure','-6',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -172,7 +158,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set Set scene mode auto
-        so.setCameraOption('Scenes','auto')
+        so.setCameraOption('Scenes','auto',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -187,7 +173,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2  Set scene mode Sports
-        so.setCameraOption('Scenes','sports')
+        so.setCameraOption('Scenes','sports',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -202,7 +188,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2  Set scene mode Night
-        so.setCameraOption('Scenes','night')
+        so.setCameraOption('Scenes','night',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -217,7 +203,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2  Set scene mode Landscape
-        so.setCameraOption('Scenes','landscape')
+        so.setCameraOption('Scenes','landscape',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -232,12 +218,12 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2  Set scene mode Portrait
-        so.setCameraOption('Scenes','portrait')
+        so.setCameraOption('Scenes','portrait',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
     # Testcase 14
-    def testCaptureSmileImageWithSceneNightPortrait(self):
+    #def testCaptureSmileImageWithSceneNightPortrait(self):
         """
         Summary:Capture image with Scene mode NightPortrait.
         Step:
@@ -247,9 +233,9 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2  Set scene mode NightPortrait
-        so.setCameraOption('Scenes','night-portrait')
+    #    so.setCameraOption('Scenes','night-portrait')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
-        tb.captureAndCheckPicCount('smile')
+    #    tb.captureAndCheckPicCount('smile')
 
     # # Testcase 15
     # def testCaptureSmileImageWithSceneBarcode(self):
@@ -278,7 +264,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2  Set photo size 6M
-        so.setCameraOption('Picture Size','WideScreen')
+        so.setCameraOption('Picture Size','WideScreen',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -293,7 +279,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2  Set photo size 13M
-        so.setCameraOption('Picture Size','StandardScreen')
+        so.setCameraOption('Picture Size','StandardScreen',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -308,7 +294,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set Ge0-tag ON.
-        so.setCameraOption('Geo Location','on')
+        so.setCameraOption('Geo Location','on',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -323,7 +309,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set Ge0-tag OFF.
-        so.setCameraOption('Geo Location','off')
+        so.setCameraOption('Geo Location','off',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -338,7 +324,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set ISO Setting Auto
-        so.setCameraOption('ISO','iso-auto')
+        so.setCameraOption('ISO','iso-auto',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -353,7 +339,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set ISO Setting 100
-        so.setCameraOption('ISO','iso-100')
+        so.setCameraOption('ISO','iso-100',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -368,7 +354,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set ISO Setting 200
-        so.setCameraOption('ISO','iso-200')
+        so.setCameraOption('ISO','iso-200',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -383,7 +369,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set ISO Setting 400
-        so.setCameraOption('ISO','iso-400')
+        so.setCameraOption('ISO','iso-400',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -398,7 +384,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set ISO Setting 800
-        so.setCameraOption('ISO','iso-800')
+        so.setCameraOption('ISO','iso-800',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -413,7 +399,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Capture image with White Balance Auto.
-        so.setCameraOption('White Balance','auto')
+        so.setCameraOption('White Balance','auto',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -428,7 +414,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Capture image with White Balance Incandescent.
-        so.setCameraOption('White Balance','incandescent')
+        so.setCameraOption('White Balance','incandescent',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -443,7 +429,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Capture image with White Balance Daylight.
-        so.setCameraOption('White Balance','daylight')
+        so.setCameraOption('White Balance','daylight',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -458,7 +444,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Capture image with White Balance Fluorescent.
-        so.setCameraOption('White Balance','fluorescent')
+        so.setCameraOption('White Balance','fluorescent',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -473,28 +459,6 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Capture image with White Balance Cloudy.
-        so.setCameraOption('White Balance','cloudy-daylight')
+        so.setCameraOption('White Balance','cloudy-daylight',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
-
-    def _pressBack(self,touchtimes):
-        for i in range(1,touchtimes+1):
-            d.press('back')
-
-    def _confirmSettingMode(self,sub_mode,option):
-        if sub_mode == 'location':
-            result = a.cmd('cat','/data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0.xml | grep '+ sub_mode)
-            if result.find(option) == -1:
-                self.fail('set camera setting ' + sub_mode + ' to ' + option + ' failed')
-        else:
-            result = a.cmd('cat','/data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0_0.xml | grep ' + sub_mode)
-            if result.find(option) == -1:
-                self.fail('set camera setting ' + sub_mode + ' to ' + option + ' failed')
-
-    def _capturePictureAndConfirm(self,timer=0):
-        beforeC = a.cmd('ls','/sdcard/DCIM/100ANDRO')
-        TB.takePicture('smile')
-        time.sleep(timer)       
-        afterC  = a.cmd('ls','/sdcard/DCIM/100ANDRO')
-        if afterC == beforeC:
-            self.fail('take picture failed !!')

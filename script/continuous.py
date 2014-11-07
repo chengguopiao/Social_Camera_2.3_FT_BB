@@ -16,58 +16,23 @@ a  = util.Adb()
 sm = util.SetCaptureMode()
 tb = util.TouchButton()
 so = util.SetOption()
-#Written by Piao chengguo
-
-# PATH
-PATH ='/data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0_0.xml '
-PATH1='/data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0.xml '
-# key
-EXPOSURE_KEY ='| grep pref_camera_exposure_key'
-IOS_KEY='| grep pref_camera_iso_key'
-LOCATION_KEY ='| grep pref_camera_geo_location_key'
-SCENE_KEY ='| grep pref_camera_scenemode_key'
-FDFR_KEY ='| grep pref_fdfr_key'
-PICTURE_SIZE_KEY ='| grep pref_camera_picture_size_key'
-HINTS_KEY ='| grep pref_camera_hints_key'
-TIMER_KEY ='| grep pref_camera_delay_shooting_key'
-WHITEBALANCE ='| grep pref_camera_whitebalance_key'
-FLASH_STATE='| grep pref_camera_flashmode_key'
-DRAWUP_CAPTUREBUTTON='adb shell input swipe 530 1690 530 1600 '
-#################################
-
-PACKAGE_NAME = 'com.intel.camera22'
-ACTIVITY_NAME = PACKAGE_NAME + '/.Camera'
 
 class CameraTest(unittest.TestCase):
     def setUp(self):
         super(CameraTest,self).setUp()
-        # rm DCIM folder and refresh from adb shell
-        #a.cmd('rm','/sdcard/DCIM/100ANDRO')
-        #a.cmd('refresh','/sdcard/DCIM/100ANDRO')
-        #Because default camera after launching is single mode, so we set this step in setUp().
-        #Step 1. Launch single capture activity
-        #a.cmd('launch','com.intel.camera22/.Camera')
-        #time.sleep(2)
-        #if  d(text = 'Yes').wait.exists(timeout = 3000):
-        #    d(text = 'Yes').click.wait()
-        #if d(text = 'Skip').wait.exists(timeout = 3000):
-        #    d(text = 'Skip').click.wait()
         a.setUpDevice()
         sm.switchCaptureMode('Single')
 
 
     def tearDown(self):
         super(CameraTest,self).tearDown()
-        #4.Exit  activity
-        #self._pressBack(4)
-        #a.cmd('pm','com.intel.camera22')
         a.tearDownDevice()
 
 
 
 ### Continuous capture(merge into single capture mode) 40 ###
 # Test case 1
-    def testContinuousCapturePictureWithFlashOn(self):
+    #def testContinuousCapturePictureWithFlashOn(self):
         """
         Summary:testCapturePictureWithFlashOn: Take a picture with flash on
         Steps:  1.Launch single capture activity
@@ -75,12 +40,12 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture picture
         """
         # step 2
-        so.setCameraOption('Flash','on')
+    #    so.setCameraOption('Flash','on')
         # step 4~5
-        tb.captureAndCheckPicCount('longclick',3)          
+    #    tb.captureAndCheckPicCount('longclick',3)          
 
 # Test case 2
-    def testContinuousCapturePictureWithFlashOff(self):
+    #def testContinuousCapturePictureWithFlashOff(self):
         """
         Summary:testCapturePictureWithFlashOn: Take a picture with flash on
         Steps:  1.Launch single capture activity
@@ -88,12 +53,12 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture picture
         """
         # step 2
-        so.setCameraOption('Flash','off')
+    #    so.setCameraOption('Flash','off')
         # step 4~5
-        tb.captureAndCheckPicCount('longclick',3)  
+    #    tb.captureAndCheckPicCount('longclick',3)  
 
 # Test case 3
-    def testContinuousCapturePictureWithFlashAuto(self):
+    #def testContinuousCapturePictureWithFlashAuto(self):
         """
         Summary:testCapturePictureWithFlashAuto: Take a picture with flash auto
         Steps:  1.Launch single capture activity
@@ -101,9 +66,9 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture picture
         """
         # step 2
-        so.setCameraOption('Flash','auto')
+    #    so.setCameraOption('Flash','auto')
         # step 4~5
-        tb.captureAndCheckPicCount('longclick',3)  
+    #    tb.captureAndCheckPicCount('longclick',3)  
 
 # Test case 4
     def testContinuousCaptureWithExposureAuto(self):
@@ -202,7 +167,7 @@ class CameraTest(unittest.TestCase):
         tb.captureAndCheckPicCount('longclick',3)   
 
 # Test case 11
-    def testContinuousCapturePictureWithScenesNightportrait(self):
+    #def testContinuousCapturePictureWithScenesNightportrait(self):
         """
         Summary:testCapturePictureWithScenesNightportrait: Capture image with Scene mode Night-portrait
         Steps:  1.Launch single capture activity
@@ -211,9 +176,9 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         """
         # step 2
-        so.setCameraOption('Scenes','night-portrait')
+    #    so.setCameraOption('Scenes','night-portrait')
         # step 4~5
-        tb.captureAndCheckPicCount('longclick',3) 
+    #    tb.captureAndCheckPicCount('longclick',3) 
 
 # Test case 12
     def testContinuousCapturePictureWithScenesPortrait(self):
@@ -230,7 +195,7 @@ class CameraTest(unittest.TestCase):
         tb.captureAndCheckPicCount('longclick',3) 
 
 # Test case  13
-    def testContinuousCapturePictureWithScenesBarcode(self):
+    #def testContinuousCapturePictureWithScenesBarcode(self):
         """
         Summary:testCapturePictureWithScenesBarcode: Capture image with Scene mode barcode
         Steps:  1.Launch single capture activity
@@ -239,9 +204,9 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         """
         # step 2
-        so.setCameraOption('Scenes','barcode')
+    #    so.setCameraOption('Scenes','barcode')
         # step 4~5
-        tb.captureAndCheckPicCount('longclick',3) 
+    #    tb.captureAndCheckPicCount('longclick',3) 
 
 # Test case 14
     def testContinuousCapturePictureWithScenesLandscape(self):
@@ -618,17 +583,3 @@ class CameraTest(unittest.TestCase):
         # step 4~5
         tb.captureAndCheckPicCount('longclick',3)
 # Test case 
-
-
-
-######################################################################   
-
-
-    def _launchCamera(self):
-        d.start_activity(component = ACTIVITY_NAME)
-        time.sleep(1)
-        assert d(resourceId = 'com.intel.camera22:id/mode_button').wait.exists(timeout = 3000), 'Launch camera failed in 3s'
-
-    def _pressBack(self,touchtimes):
-        for i in range(1,touchtimes+1):
-            d.press('back')
