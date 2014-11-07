@@ -35,9 +35,9 @@ Confirm_Mode = {'Depth Snapshot':'depth',
                 'Video':'video',
                 'Panorama':'panorama',
                 'Burst':'burst',
-                'Perfect Shot':'perfectshot'
-                'smile':'smile'
-                'hdr':'hdr'
+                'Perfect Shot':'perfectshot',
+                'smile':'smile',
+                'hdr':'hdr',
                 'default':'default'
                 }
 Mode         = {'9':'video',
