@@ -111,7 +111,7 @@ script.perfectshot.CameraTest.testPerfectShotCapturePictureWithScenesSport= 1
 script.perfectshot.CameraTest.testPerfectShotCapturePictureWithScenesLandscape= 1
 script.perfectshot.CameraTest.testPerfectShotCapturePictureWithScenesPortrait= 1
 script.perfectshot.CameraTest.testPerfectShotCapturePictureWithScenesNight= 1
-script.perfectshot.CameraTest.testPerfectShotCapturePictureWithScenesBarcode= 1
+
 script.perfectshot.CameraTest.testPerfectShotCapturepictureWithGeoLocationOn= 1
 script.perfectshot.CameraTest.testPerfectShotCapturepictureWithGeoLocationOff= 1
 script.panorama.CameraTest.testPanoramaCaptureWithExposureAuto= 1
