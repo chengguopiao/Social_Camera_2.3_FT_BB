@@ -19,7 +19,7 @@ script.singlecamera.CameraTest.testCaptureSingleImageWithSceneSports = 1
 script.singlecamera.CameraTest.testCaptureSingleImageWithSceneNight = 1
 script.singlecamera.CameraTest.testCaptureSingleImageWithSceneLandscape = 1
 script.singlecamera.CameraTest.testCaptureSingleImageWithScenePortrait = 1
-script.singlecamera.CameraTest.testCaptureSingleImageWithSceneNightPortrait = 1
+
 script.singlecamera.CameraTest.testCaptureSingleImageWithFDFROn = 1
 script.singlecamera.CameraTest.testCaptureSingleImageWithFDFROff = 1
 script.singlecamera.CameraTest.testCaptureSingleImageWithPictureSizeWidescreen = 1
@@ -56,7 +56,7 @@ script.smilecamera.CameraTest.testCaptureSmileImageWithSceneSports = 1
 script.smilecamera.CameraTest.testCaptureSmileImageWithSceneNight = 1
 script.smilecamera.CameraTest.testCaptureSmileImageWithSceneLandscape = 1
 script.smilecamera.CameraTest.testCaptureSmileImageWithScenePortrait = 1
-script.smilecamera.CameraTest.testCaptureSmileImageWithSceneNightPortrait = 1
+
 script.smilecamera.CameraTest.testCaptureSmileImageWithPictureSizeWidescreen = 1
 script.smilecamera.CameraTest.testCaptureSmileImageWithPictureSizeStandardScreen = 1
 script.smilecamera.CameraTest.testCaptureSmileImageWithISOAuto = 1
@@ -77,7 +77,7 @@ script.continuous.CameraTest.testContinuousCaptureWithExposureRedOne= 1
 script.continuous.CameraTest.testContinuousCaptureWithExposureRedTwo= 1
 script.continuous.CameraTest.testContinuousCapturePictureWithScenesAuto= 1
 script.continuous.CameraTest.testContinuousCapturePictureWithScenesSport= 1
-script.continuous.CameraTest.testContinuousCapturePictureWithScenesNightportrait= 1
+
 script.continuous.CameraTest.testContinuousCapturePictureWithScenesPortrait= 1
 script.continuous.CameraTest.testContinuousCapturePictureWithScenesLandscape= 1
 script.continuous.CameraTest.testContinuousCapturePictureWithScenesNight= 1
@@ -107,7 +107,7 @@ script.perfectshot.CameraTest.testPerfectShotCaptureWithExposureRedOne= 1
 script.perfectshot.CameraTest.testPerfectShotCaptureWithExposureRedTwo= 1
 script.perfectshot.CameraTest.testPerfectShotCapturePictureWithScenesAuto= 1
 script.perfectshot.CameraTest.testPerfectShotCapturePictureWithScenesSport= 1
-script.perfectshot.CameraTest.testPerfectShotCapturePictureWithScenesNightPortrait= 1
+
 script.perfectshot.CameraTest.testPerfectShotCapturePictureWithScenesLandscape= 1
 script.perfectshot.CameraTest.testPerfectShotCapturePictureWithScenesPortrait= 1
 script.perfectshot.CameraTest.testPerfectShotCapturePictureWithScenesNight= 1
@@ -159,7 +159,7 @@ script.burstfastcapture.CameraTest.testCapturePictureWithScenesSports = 1
 script.burstfastcapture.CameraTest.testCapturePictureWithScenesNight = 1
 script.burstfastcapture.CameraTest.testCapturePictureWithScenesLandscape = 1
 script.burstfastcapture.CameraTest.testCapturePictureWithScenesPortrait = 1
-script.burstfastcapture.CameraTest.testCapturePictureWithScenesNightPortrait = 1
+
 script.burstfastcapture.CameraTest.testCapturePictureWithSizeWidescreen = 1
 script.burstfastcapture.CameraTest.testCapturePictureWithSizeStandard = 1
 script.burstfastcapture.CameraTest.testCapturepictureWithGeoLocationOn = 1
@@ -174,7 +174,7 @@ script.burstslowcapture.CameraTest.testCapturePictureWithScenesSports = 1
 script.burstslowcapture.CameraTest.testCapturePictureWithScenesNight = 1
 script.burstslowcapture.CameraTest.testCapturePictureWithScenesLandscape = 1
 script.burstslowcapture.CameraTest.testCapturePictureWithScenesPortrait = 1
-script.burstslowcapture.CameraTest.testCapturePictureWithScenesNightPortrait = 1
+
 script.burstslowcapture.CameraTest.testCapturePictureWithSizeWidescreen = 1
 script.burstslowcapture.CameraTest.testCapturePictureWithSizeStandard = 1
 script.burstslowcapture.CameraTest.testCapturepictureWithGeoLocationOn = 1
