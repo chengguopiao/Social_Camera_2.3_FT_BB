@@ -399,7 +399,7 @@ class SetOption():
         #cated_0 = int(commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0.xml | wc -l'))
         #print '_0_0.xml wc -l = %s' %cated_0_0 + ' and _0.xml wc -l = %s' %cated_0
         cameraID = commands.getoutput(CAMERA_ID)
-        raise Exception('cameraID: '+cameraID)
+        #raise Exception('cameraID: '+cameraID)
         backOrFront = ((cameraID.split('>')[1]).split('<'))[0]
         if newoptiontext not in SETTINGS_0:
             if newoptiontext == 'Video_Size':
