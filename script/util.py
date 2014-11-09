@@ -360,7 +360,14 @@ class SetOption():
         y_2 = self._getSettingBounds()[1] - self._getOptionWidthAndHeight()[1]
         d.swipe(x, y_1, x, y_2)
         time.sleep(2)
-
+        
+    def _slideSettingListDown(self):
+        x   = self._getSettingBounds()[3]
+        y_1 = self._getSettingBounds()[1] + self._getOptionWidthAndHeight()[1]
+        y_2 = self._getSettingBounds()[2]
+        d.swipe(x, y_1, x, y_2)
+        time.sleep(2)
+        
     def _slideOptionLeftToRight(self,optiontext,diffindex):
         # --->>>
         x_1 = self._getSettingBounds()[0] - self._getOptionWidthAndHeight()[0]
@@ -390,17 +397,26 @@ class SetOption():
         d(resourceId = 'com.intel.camera22:id/camera_settings').click.wait()
         while not d(resourceId = 'com.intel.camera22:id/setting_item_name').wait.exists(timeout=2000):
             d(resourceId = 'com.intel.camera22:id/camera_settings').click.wait()
-        trytimes = 1
-        while d(text = optiontext).wait.gone(timeout = 3000) and trytimes < 5:
-            self._slideSettingListUp()
-            trytimes = trytimes + 1
+        # If scenes is going to change to auto, the setting may be on the top , we need to slide setting list down
+        if optiontext=='Scenes' and option=='auto':
+            slidetimes = 1
+            while d(text = optiontext).wait.gone(timeout = 2000) and slidetimes < 5:
+                self._slideSettingListDown()
+                slidetimes = slidetimes + 1
+        else:
+            trytimes = 1
+            while d(text = optiontext).wait.gone(timeout = 2000) and trytimes < 5:
+                self._slideSettingListUp()
+                trytimes = trytimes + 1
         newoptiontext = optiontext.replace(' ', '_')
         #cated_0_0 = int(commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0_0.xml | wc -l'))
         #cated_0 = int(commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0.xml | wc -l'))
         #print '_0_0.xml wc -l = %s' %cated_0_0 + ' and _0.xml wc -l = %s' %cated_0
         cameraID = commands.getoutput(CAMERA_ID)
-        #raise Exception('cameraID: '+cameraID)
-        backOrFront = ((cameraID.split('>')[1]).split('<'))[0]
+        if cameraID == '' or cameraID == None:
+            backOrFront = DEFAULT_OPTION['Switch_Camera']
+        else:
+            backOrFront = ((cameraID.split('>')[1]).split('<'))[0]
         if newoptiontext not in SETTINGS_0:
             if newoptiontext == 'Video_Size':
                 stringcatedone = commands.getoutput(PATH_PREF_XML+'com.intel.camera22_preferences_'+mode+'_'+backOrFront+'.xml | grep %s' %DICT_OPTION_KEY[newoptiontext][0])
@@ -536,7 +552,7 @@ class TouchButton():
         if result.find('value="5"') != -1 and capturemode != 'longclick':
             if string.atoi(beforeNo) != string.atoi(afterNo) - 10*times:
                raise Exception('Taking picture/video failed!'+'bn='+beforeNo+',an='+afterNo+','+d[capturemode])
-        elif result.find('value="7"')==-1 and result.find('value="0"')==-1 and capturemode != 'longclick':
+        elif result.find('value="7"')==-1 and capturemode != 'longclick':
             if string.atoi(beforeNo) != string.atoi(afterNo) - times:
                 raise Exception('Taking picture/video failed!'+'bn='+beforeNo+',an='+afterNo+','+d[capturemode])
         else:
