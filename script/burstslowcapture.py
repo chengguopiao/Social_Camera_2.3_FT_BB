@@ -15,17 +15,19 @@ import string
 
 #Written by ZhuYanbo
 
-AD         = util.Adb()
-tb         = util.TouchButton()
-so         = util.SetOption()
-sm         = util.SetCaptureMode()
-modeNumber = util.ModeNumber['burst']
+AD          = util.Adb()
+tb          = util.TouchButton()
+so          = util.SetOption()
+sm          = util.SetCaptureMode()
+modeNumber  = util.ModeNumber['burst']
+confirmMode = util.ConfirmMode
 
 class CameraTest(unittest.TestCase):
     def setUp(self):
         super(CameraTest,self).setUp()
         AD.setUpDevice(False)
         sm.switchCaptureMode('Burst','Slow')
+        tb.confirmCameraMode(confirmMode['Burst'])
 
     def tearDown(self):
         super(CameraTest,self).tearDown()
@@ -40,7 +42,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture burst picture
                 4.Exit  activity
         '''
-        so.setCameraOption('Exposure','0',modeNumber)
+        so.setCameraOption('Exposure','0')
+        tb.confirmSettingMode('Exposure','0',modeNumber)
         tb.captureAndCheckPicCount('single',10)
 
     def testCaptureWithExposurePlugOne(self):
@@ -52,7 +55,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture burst picture
                 4.Exit  activity
         '''
-        so.setCameraOption('Exposure','3',modeNumber)
+        so.setCameraOption('Exposure','3')
+        tb.confirmSettingMode('Exposure','3',modeNumber)
         tb.captureAndCheckPicCount('single',10)
 
     def testCaptureWithExposurePlugTwo(self):
@@ -64,7 +68,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture burst picture
                 4.Exit  activity
         '''
-        so.setCameraOption('Exposure','6',modeNumber)
+        so.setCameraOption('Exposure','6')
+        tb.confirmSettingMode('Exposure','6',modeNumber)
         tb.captureAndCheckPicCount('single',10)
 
     def testCaptureWithExposureRedOne(self):
@@ -76,7 +81,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture burst picture
                 4.Exit  activity
         '''
-        so.setCameraOption('Exposure','-3',modeNumber)
+        so.setCameraOption('Exposure','-3')
+        tb.confirmSettingMode('Exposure','-3',modeNumber)
         tb.captureAndCheckPicCount('single',10)
 
     def testCaptureWithExposureRedTwo(self):
@@ -88,7 +94,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture burst picture
                 4.Exit  activity
         '''
-        so.setCameraOption('Exposure','-6',modeNumber)
+        so.setCameraOption('Exposure','-6')
+        tb.confirmSettingMode('Exposure','-6',modeNumber)
         tb.captureAndCheckPicCount('single',10)
 
     def testCapturePictureWithScenesAuto(self):
@@ -100,7 +107,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture burst picture
                 4.Exit  activity
         '''
-        so.setCameraOption('Scenes','auto',modeNumber)
+        so.setCameraOption('Scenes','auto')
+        tb.confirmSettingMode('Scenes','auto',modeNumber)
         tb.captureAndCheckPicCount('single',10)
 
     def testCapturePictureWithScenesSports(self):
@@ -112,7 +120,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture burst picture
                 4.Exit  activity
         '''
-        so.setCameraOption('Scenes','sports',modeNumber)
+        so.setCameraOption('Scenes','sports')
+        tb.confirmSettingMode('Scenes','sports',modeNumber)
         tb.captureAndCheckPicCount('single',10)
 
     def testCapturePictureWithScenesNight(self):
@@ -124,7 +133,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture burst picture
                 4.Exit  activity
         '''
-        so.setCameraOption('Scenes','night',modeNumber)
+        so.setCameraOption('Scenes','night')
+        tb.confirmSettingMode('Scenes','night',modeNumber)
         tb.captureAndCheckPicCount('single',10)
 
     def testCapturePictureWithScenesLandscape(self):
@@ -136,7 +146,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture burst picture
                 4.Exit  activity
         '''
-        so.setCameraOption('Scenes','landscape',modeNumber)
+        so.setCameraOption('Scenes','landscape')
+        tb.confirmSettingMode('Scenes','landscape',modeNumber)
         tb.captureAndCheckPicCount('single',10)
 
     def testCapturePictureWithScenesPortrait(self):
@@ -148,7 +159,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture burst picture
                 4.Exit  activity
         '''
-        so.setCameraOption('Scenes','portrait',modeNumber)
+        so.setCameraOption('Scenes','portrait')
+        tb.confirmSettingMode('Scenes','portrait',modeNumber)
         tb.captureAndCheckPicCount('single',10)
 
     #def testCapturePictureWithScenesNightPortrait(self):
@@ -172,7 +184,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture burst picture
                 4.Exit  activity
         '''
-        so.setCameraOption('Picture Size','WideScreen',modeNumber)
+        so.setCameraOption('Picture Size','WideScreen')
+        tb.confirmSettingMode('Picture Size','WideScreen',modeNumber)
         tb.captureAndCheckPicCount('single',10)
 
     def testCapturePictureWithSizeStandard(self):
@@ -184,7 +197,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture burst picture
                 4.Exit  activity
         '''
-        so.setCameraOption('Picture Size','StandardScreen',modeNumber)
+        so.setCameraOption('Picture Size','StandardScreen')
+        tb.confirmSettingMode('Picture Size','StandardScreen',modeNumber)
         tb.captureAndCheckPicCount('single',10)
     
     def testCapturepictureWithGeoLocationOn(self):
@@ -196,7 +210,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture burst picture
                 4.Exit  activity
         '''
-        so.setCameraOption('Geo Location','on',modeNumber)
+        so.setCameraOption('Geo Location','on')
+        tb.confirmSettingMode('Geo Location','on',modeNumber)
         tb.captureAndCheckPicCount('single',10)
 
     def testCapturepictureWithGeoLocationOff(self):
@@ -208,5 +223,6 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture burst picture
                 4.Exit  activity
         '''
-        so.setCameraOption('Geo Location','off',modeNumber)
+        so.setCameraOption('Geo Location','off')
+        tb.confirmSettingMode('Geo Location','off',modeNumber)
         tb.captureAndCheckPicCount('single',10)
