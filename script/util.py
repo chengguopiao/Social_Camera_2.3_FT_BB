@@ -510,19 +510,42 @@ class TouchButton():
         else:
             print('Current camera is ' + status)
     
-    def confirmSettingMode(self,sub_mode,option):
-        mode = sub_mode.replace(' ', '_')
-        if option == DEFAULT_OPTION[mode]:
-            print ('current is '+ sub_mode + option +' mode' )
-        else:            
-            if mode not in SETTINGS_0:
-                result = commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0_0.xml | grep ' + DICT_OPTION_KEY[mode])
-                if result.find(option) == -1:
-                    raise Exception('set camera setting ' + mode + ' to ' + option + ' failed') 
+    def confirmSettingMode(self,optiontext,option,mode=ModeNumber['single']):
+        # Get camera back or front status
+        cameraID = commands.getoutput(CAMERA_ID)
+        if cameraID == '' or cameraID == None:
+            backOrFront = DEFAULT_OPTION['Switch_Camera']
+        else:
+            backOrFront = ((cameraID.split('>')[1]).split('<'))[0]
+        # Get current option
+        newoptiontext = optiontext.replace(' ', '_')
+        if newoptiontext not in SETTINGS_0:
+            if newoptiontext == 'Video_Size':
+                stringcatedone = commands.getoutput(PATH_PREF_XML+'com.intel.camera22_preferences_'+mode+'_'+backOrFront+'.xml | grep %s' %DICT_OPTION_KEY[newoptiontext][0])
+                stringcatedtwo = commands.getoutput(PATH_PREF_XML+'com.intel.camera22_preferences_'+mode+'_'+backOrFront+'.xml | grep %s' %DICT_OPTION_KEY[newoptiontext][1])
+                if stringcatedone == None or stringcatedone =='' or stringcatedtwo == None or stringcatedtwo == '':
+                    currentoption = DEFAULT_OPTION[newoptiontext]
+                else:
+                    currenthighspeed = ((stringcatedone.split('value=\"')[1]).split('\"'))[0]
+                    currentqualitykey = ((stringcatedtwo.split('>')[1]).split('<'))[0]
+                    currentoption = [currenthighspeed,currentqualitykey]
             else:
-                result = commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0.xml | grep '+ DICT_OPTION_KEY[mode])
-                if result.find(option) == -1:
-                    raise Exception('set camera setting ' + mode + ' to ' + option + ' failed')             
+                stringcated = commands.getoutput(PATH_PREF_XML+'com.intel.camera22_preferences_'+mode+'_'+backOrFront+'.xml | grep %s' %DICT_OPTION_KEY[newoptiontext])
+                #raise Exception('stringcated: '+stringcated+', adb shell cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_'+mode+'_'+backOrFront+'.xml | grep')
+                if stringcated == None or stringcated =='':
+                    currentoption = DEFAULT_OPTION[newoptiontext]
+                else:
+                    currentoption = ((stringcated.split('>')[1]).split('<'))[0]
+        else:
+            stringcated = commands.getoutput(PATH_PREF_XML+'com.intel.camera22_preferences_0.xml | grep %s' %DICT_OPTION_KEY[newoptiontext])
+            if stringcated == None or stringcated =='':
+                currentoption = DEFAULT_OPTION[newoptiontext]
+            else:
+                currentoption = ((stringcated.split('>')[1]).split('<'))[0]
+        currentindex = DICT_OPTION_NAME[newoptiontext].index(currentoption)
+        targetindex  = DICT_OPTION_NAME[newoptiontext].index(option)
+        assert currentindex==targetindex , 'Setting not changed! Current setting is: '+currentoption+', target setting is: '+option
+       
     
     def confirmCameraMode(self,mode):
         mode_index = CONFIRM_MODE_LIST.index(mode)    
