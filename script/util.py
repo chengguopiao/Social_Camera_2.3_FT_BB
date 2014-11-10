@@ -558,7 +558,7 @@ class TouchButton():
         currentindex = CONFIRM_MODE_LIST.index(modenew)
         if  mode_index != currentindex:
             if mode != 'depth' or cmode != ModeNumber['default']:
-                raise Exception('set'+ mode + ' fail')
+                raise Exception('set '+ mode + ' fail: cmode is '+cmode)
             #'com.intel.camera22_preferences_'+cmodenew+'.xml'
 
     def captureAndCheckPicCount(self,capturemode,delaytime=0,times=1):
