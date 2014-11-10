@@ -36,8 +36,6 @@ ConfirmMode = {'Depth Snapshot':'depth',
                 'Panorama':'panorama',
                 'Burst':'burst',
                 'Perfect Shot':'perfectshot',
-                'smile':'smile',
-                'hdr':'hdr',
                 'default':'default'
                 }
 Mode         = {'9':'video',
@@ -135,7 +133,7 @@ DEFAULT_OPTION    = {'Exposure'         : Exposure[2],
 ##################################################################################################################
 #TouchButton() Class variable
 ACTIVITY_NAME           = 'com.intel.camera22/.Camera'
-CONFIRM_MODE_LIST       = ['video','single','depth','panorama','burst','perfectshot','smile','hdr','default']
+CONFIRM_MODE_LIST       = ['video','single','depth','panorama','burst','perfectshot','default']
 CPTUREBUTTON_RESOURCEID = 'com.intel.camera22:id/btn_mode'
 FRONTBACKBUTTON_DESCR   = 'com.intel.camera22:id/shortcut_mode_2'
 CPTUREPOINT             = 'adb shell input swipe 2200 1095 2200 895 '
