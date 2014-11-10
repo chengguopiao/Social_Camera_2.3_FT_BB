@@ -386,7 +386,7 @@ class SetOption():
         d.swipe(x_1, y, x_2 - x_i, y)
         time.sleep(2)
 
-    def setCameraOption(self,optiontext,option,mode=ModeNumber['single']):
+    def setCameraOption(self,optiontext,option):
         '''
            ***Usage***
             To set Scenes as 'sports':
@@ -408,48 +408,12 @@ class SetOption():
             while d(text = optiontext).wait.gone(timeout = 2000) and trytimes < 5:
                 self._slideSettingListUp()
                 trytimes = trytimes + 1
+        # Get target option index
         newoptiontext = optiontext.replace(' ', '_')
-        #cated_0_0 = int(commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0_0.xml | wc -l'))
-        #cated_0 = int(commands.getoutput('adb shell cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_0.xml | wc -l'))
-        #print '_0_0.xml wc -l = %s' %cated_0_0 + ' and _0.xml wc -l = %s' %cated_0
-        cameraID = commands.getoutput(CAMERA_ID)
-        if cameraID == '' or cameraID == None:
-            backOrFront = DEFAULT_OPTION['Switch_Camera']
-        else:
-            backOrFront = ((cameraID.split('>')[1]).split('<'))[0]
-        if newoptiontext not in SETTINGS_0:
-            if newoptiontext == 'Video_Size':
-                stringcatedone = commands.getoutput(PATH_PREF_XML+'com.intel.camera22_preferences_'+mode+'_'+backOrFront+'.xml | grep %s' %DICT_OPTION_KEY[newoptiontext][0])
-                stringcatedtwo = commands.getoutput(PATH_PREF_XML+'com.intel.camera22_preferences_'+mode+'_'+backOrFront+'.xml | grep %s' %DICT_OPTION_KEY[newoptiontext][1])
-                if stringcatedone == None or stringcatedone =='' or stringcatedtwo == None or stringcatedtwo == '':
-                    currentoption = DEFAULT_OPTION[newoptiontext]
-                else:
-                    currenthighspeed = ((stringcatedone.split('value=\"')[1]).split('\"'))[0]
-                    currentqualitykey = ((stringcatedtwo.split('>')[1]).split('<'))[0]
-                    currentoption = [currenthighspeed,currentqualitykey]
-            else:
-                stringcated = commands.getoutput(PATH_PREF_XML+'com.intel.camera22_preferences_'+mode+'_'+backOrFront+'.xml | grep %s' %DICT_OPTION_KEY[newoptiontext])
-                #raise Exception('stringcated: '+stringcated+', adb shell cat /data/data/com.intel.camera22/shared_prefs/com.intel.camera22_preferences_'+mode+'_'+backOrFront+'.xml | grep')
-                if stringcated == None or stringcated =='':
-                    currentoption = DEFAULT_OPTION[newoptiontext]
-                else:
-                    currentoption = ((stringcated.split('>')[1]).split('<'))[0]
-        else:
-            stringcated = commands.getoutput(PATH_PREF_XML+'com.intel.camera22_preferences_0.xml | grep %s' %DICT_OPTION_KEY[newoptiontext])
-            if stringcated == None or stringcated =='':
-                currentoption = DEFAULT_OPTION[newoptiontext]
-            else:
-                currentoption = ((stringcated.split('>')[1]).split('<'))[0]
-        #raise Exception(currentoption)
-        #Get the current option's index and compare it with the target option
-        currentindex = DICT_OPTION_NAME[newoptiontext].index(currentoption)
         targetindex  = DICT_OPTION_NAME[newoptiontext].index(option)
-        #diffindex = abs(currentindex - targetindex)
-        if currentindex != targetindex:
-            d.click(self._getFirstItem() + self._getOptionWidthAndHeight()[0] * targetindex, self._getOptionOrdinate(optiontext))
-            d.click(1000,500)
-        else:
-            d.click(1000,500)
+        # Click target option
+        d.click(self._getFirstItem() + self._getOptionWidthAndHeight()[0] * targetindex, self._getOptionOrdinate(optiontext))
+        d.click(1000,500)
 
 class TouchButton():
 
