@@ -58,7 +58,7 @@ class CameraTest(unittest.TestCase):
         # step 1  
         sm.switchCaptureMode('Single','HDR')    # change hdr mode
         time.sleep(1)
-        tb.confirmCameraMode(util.ConfirmMode['hdr'])
+        tb.confirmCameraMode(util.ConfirmMode['Single'])
         # step 2
         sm.switchCaptureMode('Video')   # change video mode
         time.sleep(1)
@@ -80,7 +80,7 @@ class CameraTest(unittest.TestCase):
         # step 1  
         sm.switchCaptureMode('Single','Smile')    # change smile mode
         time.sleep(1)
-        tb.confirmCameraMode(util.ConfirmMode['smile'])
+        tb.confirmCameraMode(util.ConfirmMode['Single'])
         # step 2
         sm.switchCaptureMode('Video')   # change video mode
         time.sleep(1)
@@ -88,7 +88,7 @@ class CameraTest(unittest.TestCase):
         # step 3
         sm.switchCaptureMode('Single','Smile')     # change camera mod
         time.sleep(1)
-        tb.confirmCameraMode(util.ConfirmMode['smile'])
+        tb.confirmCameraMode(util.ConfirmMode['Single'])
 
 # Test case 4
     def testQuickSwitchtoBurstmode(self):
