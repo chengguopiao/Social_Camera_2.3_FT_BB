@@ -25,7 +25,7 @@ class CameraTest(unittest.TestCase):
         super(CameraTest,self).setUp()
         a.setUpDevice()
         sm.switchCaptureMode('Single','HDR')
-        tb.confirmCameraMode(confirmMode['Single'])
+        #tb.confirmCameraMode(confirmMode['Single'])
 
     def tearDown(self):
     	#a.cmd('pm','com.intel.camera22') #Force reset the camera settings to default
