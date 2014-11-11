@@ -7,11 +7,12 @@ import commands
 import util
 import string
 
-a          = util.Adb()
-sm         = util.SetCaptureMode()
-so         = util.SetOption()
-tb         = util.TouchButton()
-modeNumber = util.ModeNumber['smile']
+a           = util.Adb()
+sm          = util.SetCaptureMode()
+so          = util.SetOption()
+tb          = util.TouchButton()
+modeNumber  = util.ModeNumber['smile']
+confirmMode = util.ConfirmMode
 
 class CameraTest(unittest.TestCase):
 
@@ -19,6 +20,7 @@ class CameraTest(unittest.TestCase):
         super(CameraTest,self).setUp()
         a.setUpDevice()
         sm.switchCaptureMode('Single','Smile')
+        tb.confirmCameraMode(confirmMode['Single'])
 
     def tearDown(self):
         super(CameraTest,self).tearDown()
@@ -83,7 +85,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set exposure auto
-        so.setCameraOption('Exposure','0',modeNumber)
+        so.setCameraOption('Exposure','0')
+        tb.confirmSettingMode('Exposure','0',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -98,7 +101,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set exposure 1
-        so.setCameraOption('Exposure','3',modeNumber)
+        so.setCameraOption('Exposure','3')
+        tb.confirmSettingMode('Exposure','3',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -113,7 +117,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set exposure 2
-        so.setCameraOption('Exposure','6',modeNumber)
+        so.setCameraOption('Exposure','6')
+        tb.confirmSettingMode('Exposure','6',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -128,7 +133,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set exposure -1
-        so.setCameraOption('Exposure','-3',modeNumber)
+        so.setCameraOption('Exposure','-3')
+        tb.confirmSettingMode('Exposure','-3',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -143,7 +149,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set exposure -2
-        so.setCameraOption('Exposure','-6',modeNumber)
+        so.setCameraOption('Exposure','-6')
+        tb.confirmSettingMode('Exposure','-6',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -158,7 +165,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set Set scene mode auto
-        so.setCameraOption('Scenes','auto',modeNumber)
+        so.setCameraOption('Scenes','auto')
+        tb.confirmSettingMode('Scenes','auto',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -173,7 +181,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2  Set scene mode Sports
-        so.setCameraOption('Scenes','sports',modeNumber)
+        so.setCameraOption('Scenes','sports')
+        tb.confirmSettingMode('Scenes','sports',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -188,7 +197,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2  Set scene mode Night
-        so.setCameraOption('Scenes','night',modeNumber)
+        so.setCameraOption('Scenes','night')
+        tb.confirmSettingMode('Scenes','night',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -203,7 +213,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2  Set scene mode Landscape
-        so.setCameraOption('Scenes','landscape',modeNumber)
+        so.setCameraOption('Scenes','landscape')
+        tb.confirmSettingMode('Scenes','landscape',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -218,7 +229,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2  Set scene mode Portrait
-        so.setCameraOption('Scenes','portrait',modeNumber)
+        so.setCameraOption('Scenes','portrait')
+        tb.confirmSettingMode('Scenes','portrait',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -264,7 +276,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2  Set photo size 6M
-        so.setCameraOption('Picture Size','WideScreen',modeNumber)
+        so.setCameraOption('Picture Size','WideScreen')
+        tb.confirmSettingMode('Picture Size','WideScreen',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -279,7 +292,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2  Set photo size 13M
-        so.setCameraOption('Picture Size','StandardScreen',modeNumber)
+        so.setCameraOption('Picture Size','StandardScreen')
+        tb.confirmSettingMode('Picture Size','StandardScreen',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -294,7 +308,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set Ge0-tag ON.
-        so.setCameraOption('Geo Location','on',modeNumber)
+        so.setCameraOption('Geo Location','on')
+        tb.confirmSettingMode('Geo Location','on',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -309,7 +324,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set Ge0-tag OFF.
-        so.setCameraOption('Geo Location','off',modeNumber)
+        so.setCameraOption('Geo Location','off')
+        tb.confirmSettingMode('Geo Location','off',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -324,7 +340,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set ISO Setting Auto
-        so.setCameraOption('ISO','iso-auto',modeNumber)
+        so.setCameraOption('ISO','iso-auto')
+        tb.confirmSettingMode('ISO','iso-auto',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -339,7 +356,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set ISO Setting 100
-        so.setCameraOption('ISO','iso-100',modeNumber)
+        so.setCameraOption('ISO','iso-100')
+        tb.confirmSettingMode('ISO','iso-100',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -354,7 +372,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set ISO Setting 200
-        so.setCameraOption('ISO','iso-200',modeNumber)
+        so.setCameraOption('ISO','iso-200')
+        tb.confirmSettingMode('ISO','iso-200',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -369,7 +388,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set ISO Setting 400
-        so.setCameraOption('ISO','iso-400',modeNumber)
+        so.setCameraOption('ISO','iso-400')
+        tb.confirmSettingMode('ISO','iso-400',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -384,7 +404,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Set ISO Setting 800
-        so.setCameraOption('ISO','iso-800',modeNumber)
+        so.setCameraOption('ISO','iso-800')
+        tb.confirmSettingMode('ISO','iso-800',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -399,7 +420,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Capture image with White Balance Auto.
-        so.setCameraOption('White Balance','auto',modeNumber)
+        so.setCameraOption('White Balance','auto')
+        tb.confirmSettingMode('White Balance','auto',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -414,7 +436,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Capture image with White Balance Incandescent.
-        so.setCameraOption('White Balance','incandescent',modeNumber)
+        so.setCameraOption('White Balance','incandescent')
+        tb.confirmSettingMode('White Balance','incandescent',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -429,7 +452,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Capture image with White Balance Daylight.
-        so.setCameraOption('White Balance','daylight',modeNumber)
+        so.setCameraOption('White Balance','daylight')
+        tb.confirmSettingMode('White Balance','daylilght',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -444,7 +468,8 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Capture image with White Balance Fluorescent.
-        so.setCameraOption('White Balance','fluorescent',modeNumber)
+        so.setCameraOption('White Balance','fluorescent')
+        tb.confirmSettingMode('White Balance','fluorescent',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
@@ -459,6 +484,7 @@ class CameraTest(unittest.TestCase):
         4.Exit  activity
         """
         # Step 2 Capture image with White Balance Cloudy.
-        so.setCameraOption('White Balance','cloudy-daylight',modeNumber)
+        so.setCameraOption('White Balance','cloudy-daylight')
+        tb.confirmSettingMode('White Balance','cloudy-daylight',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
