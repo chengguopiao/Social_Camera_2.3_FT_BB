@@ -15,17 +15,19 @@ import string
 
 #Written by ZhuYanbo
 
-AD         = util.Adb()
-tb         = util.TouchButton()
-so         = util.SetOption()
-sm         = util.SetCaptureMode()
-modeNumber = util.ModeNumber['video']
+AD          = util.Adb()
+tb          = util.TouchButton()
+so          = util.SetOption()
+sm          = util.SetCaptureMode()
+modeNumber  = util.ModeNumber['video']
+confirmMode = util.ConfirmMode
 
 class CameraTest(unittest.TestCase):
     def setUp(self):
         super(CameraTest,self).setUp()
         AD.setUpDevice(False)
         sm.switchCaptureMode('Video')
+        tb.confirmCameraMode(confirmMode['Video'])
 
     def tearDown(self):
         super(CameraTest,self).tearDown()
@@ -40,7 +42,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity
         '''
-        so.setCameraOption('White Balance','auto',modeNumber)
+        so.setCameraOption('White Balance','auto')
+        tb.confirmSettingMode('White Balance','auto',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithBalanceIncandescent(self):
@@ -52,7 +55,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity
         '''
-        so.setCameraOption('White Balance','incandescent',modeNumber)
+        so.setCameraOption('White Balance','incandescent')
+        tb.confirmSettingMode('White Balance','incandescent',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithBalanceDaylight(self):
@@ -65,7 +69,8 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
 
-        so.setCameraOption('White Balance','daylight',modeNumber)
+        so.setCameraOption('White Balance','daylight')
+        tb.confirmSettingMode('White Balance','daylight',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithBalanceFluorescent(self):
@@ -78,7 +83,8 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
 
-        so.setCameraOption('White Balance','fluorescent',modeNumber)
+        so.setCameraOption('White Balance','fluorescent')
+        tb.confirmSettingMode('White Balance','fluorescent',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithBalanceCloudy(self):
@@ -90,7 +96,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity
         '''
-        so.setCameraOption('White Balance','cloudy-daylight',modeNumber)
+        so.setCameraOption('White Balance','cloudy-daylight')
+        tb.confirmSettingMode('White Balance','cloudy-daylight',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithExposureAuto(self):
@@ -103,7 +110,8 @@ class CameraTest(unittest.TestCase):
                 4.Touch shutter button to capture picture
                 5.Exit  activity
         '''
-        so.setCameraOption('Exposure','0',modeNumber)
+        so.setCameraOption('Exposure','0')
+        tb.confirmSettingMode('Exposure','0',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithExposure1(self):
@@ -116,7 +124,8 @@ class CameraTest(unittest.TestCase):
                 4.Touch shutter button to capture picture
                 5.Exit  activity
         '''
-        so.setCameraOption('Exposure','3',modeNumber)
+        so.setCameraOption('Exposure','3')
+        tb.confirmSettingMode('Exposure','3',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithExposure2(self):
@@ -129,7 +138,8 @@ class CameraTest(unittest.TestCase):
                 4.Touch shutter button to capture picture
                 5.Exit  activity
         '''
-        so.setCameraOption('Exposure','6',modeNumber)
+        so.setCameraOption('Exposure','6')
+        tb.confirmSettingMode('Exposure','6',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithExposureRed1(self):
@@ -142,7 +152,8 @@ class CameraTest(unittest.TestCase):
                 4.Touch shutter button to capture picture
                 5.Exit  activity
         '''
-        so.setCameraOption('Exposure','-3',modeNumber)
+        so.setCameraOption('Exposure','-3')
+        tb.confirmSettingMode('Exposure','-3',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithExposureRed2(self):
@@ -155,7 +166,8 @@ class CameraTest(unittest.TestCase):
                 4.Touch shutter button to capture picture
                 5.Exit  activity
         '''
-        so.setCameraOption('Exposure','-6',modeNumber)
+        so.setCameraOption('Exposure','-6')
+        tb.confirmSettingMode('Exposure','-6',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithHSSize(self):
@@ -167,7 +179,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity 
         '''
-        so.setCameraOption('Video Size',['true','5'],modeNumber)
+        so.setCameraOption('Video Size',['true','5'])
+        tb.confirmSettingMode('Video Size',['true','5'],modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithHDSize(self):
@@ -179,7 +192,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity 
         '''
-        so.setCameraOption('Video Size',['false','5'],modeNumber)
+        so.setCameraOption('Video Size',['false','5'])
+        tb.confirmSettingMode('Video Size',['false','5'],modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithSDSize(self):
@@ -191,7 +205,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity 
         '''
-        so.setCameraOption('Video Size',['false','4'],modeNumber)
+        so.setCameraOption('Video Size',['false','4'])
+        tb.confirmSettingMode('Video Size',['false','4'],modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithFHDSize(self):
@@ -203,7 +218,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity 
         '''
-        so.setCameraOption('Video Size',['false','6'],modeNumber)
+        so.setCameraOption('Video Size',['false','6'])
+        tb.confirmSettingMode('Video Size',['false','6'],modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoCaptureVideoWithFHSSize(self):
@@ -215,7 +231,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity 
         '''
-        so.setCameraOption('Video Size',['true','6'],modeNumber)
+        so.setCameraOption('Video Size',['true','6'])
+        tb.confirmSettingMode('Video Size',['true','6'],modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoWithGeoLocationOn(self):
@@ -227,7 +244,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity 
         '''
-        so.setCameraOption('Geo Location','on',modeNumber)
+        so.setCameraOption('Geo Location','on')
+        tb.confirmSettingMode('Geo Location','on',modeNumber)
         tb.captureAndCheckPicCount('video',5)
 
     def testRecordVideoWithGeoLocationOff(self):
@@ -239,5 +257,6 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture 30s video
                 4.Exit  activity 
         '''
-        so.setCameraOption('Geo Location','off',modeNumber)
+        so.setCameraOption('Geo Location','off')
+        tb.confirmSettingMode('Geo Location','off',modeNumber)
         tb.captureAndCheckPicCount('video',5)
