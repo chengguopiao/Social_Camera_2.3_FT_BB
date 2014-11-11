@@ -453,7 +453,7 @@ class CameraTest(unittest.TestCase):
         """
         # Step 2 Capture image with White Balance Daylight.
         so.setCameraOption('White Balance','daylight')
-        tb.confirmSettingMode('White Balance','daylilght',modeNumber)
+        tb.confirmSettingMode('White Balance','daylight',modeNumber)
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('smile')
 
