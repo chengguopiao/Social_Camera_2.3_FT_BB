@@ -18,12 +18,14 @@ sm         = util.SetCaptureMode()
 so         = util.SetOption()
 tb         = util.TouchButton()
 modeNumber = util.ModeNumber['hdr']
+confirmMode = util.ConfirmMode
 
 class CameraTest(unittest.TestCase):
     def setUp(self):
         super(CameraTest,self).setUp()
         a.setUpDevice()
         sm.switchCaptureMode('Single','HDR')
+        tb.confirmCameraMode(confirmMode['Single'])
 
     def tearDown(self):
     	#a.cmd('pm','com.intel.camera22') #Force reset the camera settings to default
@@ -40,7 +42,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture picture
                 4.Exit activity
         '''
-        so.setCameraOption('Face Detection','on',modeNumber)
+        so.setCameraOption('Face Detection','on')
+        tb.confirmSettingMode('Face Detection','on',modeNumber)
         tb.captureAndCheckPicCount('single')
 
     def testCapturePictureWithFDOff(self):
@@ -52,7 +55,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture picture
                 4.Exit  activity
         '''
-        so.setCameraOption('Face Detection','off',modeNumber)
+        so.setCameraOption('Face Detection','off')
+        tb.confirmSettingMode('Face Detection','off',modeNumber)
         tb.captureAndCheckPicCount('single')
 
     def testCapturePictureWithPictureSizeStandard(self):
@@ -64,7 +68,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture picture
                 4.Exit  activity
         '''
-        so.setCameraOption('Picture Size','StandardScreen',modeNumber)
+        so.setCameraOption('Picture Size','StandardScreen')
+        tb.confirmSettingMode('Picture Size','StandardScreen',modeNumber)
         tb.captureAndCheckPicCount('single')
 
     def testCaptureWithPictureSizeWidesreen(self):
@@ -76,7 +81,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture picture
                 4.Exit  activity
         '''
-        so.setCameraOption('Picture Size','WideScreen',modeNumber)
+        so.setCameraOption('Picture Size','WideScreen')
+        tb.confirmSettingMode('Picture Size','WideScreen',modeNumber)
         tb.captureAndCheckPicCount('single')
 
     def testCapturepictureWithGeoLocationOn(self):
@@ -88,7 +94,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture picture
                 4.Exit  activity
         '''
-        so.setCameraOption('Geo Location','on',modeNumber)
+        so.setCameraOption('Geo Location','on')
+        tb.confirmSettingMode('Geo Location','on',modeNumber)
         tb.captureAndCheckPicCount('single')
 
     def testCapturepictureWithGeoLocationOff(self):
@@ -99,7 +106,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture picture
                 4.Exit  activity
         """
-        so.setCameraOption('Geo Location','off',modeNumber)
+        so.setCameraOption('Geo Location','off')
+        tb.confirmSettingMode('Geo Location','off',modeNumber)
         tb.captureAndCheckPicCount('single')
 
     def testCapturePictureWithSelfTimerOff(self):
@@ -110,7 +118,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture picture
                 4.Exit  activity
         """
-        so.setCameraOption('Self Timer','0',modeNumber)
+        so.setCameraOption('Self Timer','0')
+        tb.confirmSettingMode('Self Timer','0',modeNumber)
         tb.captureAndCheckPicCount('single')
 
     def testCapturePictureWithThreeSec(self):
@@ -121,7 +130,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture picture
                 4.Exit  activity
         """
-        so.setCameraOption('Self Timer','3',modeNumber)
+        so.setCameraOption('Self Timer','3')
+        tb.confirmSettingMode('Self Timer','3',modeNumber)
         tb.captureAndCheckPicCount('single',10)
 
     def testCapturePictureWithFiveSec(self):
@@ -132,7 +142,8 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture picture
                 4.Exit  activity
         """
-        so.setCameraOption('Self Timer','5',modeNumber)
+        so.setCameraOption('Self Timer','5')
+        tb.confirmSettingMode('Self Timer','5',modeNumber)
         tb.captureAndCheckPicCount('single',10)
 
     def testCapturePictureWithTenSec(self):
@@ -143,5 +154,6 @@ class CameraTest(unittest.TestCase):
                 3.Touch shutter button to capture picture
                 4.Exit  activity
         """
-        so.setCameraOption('Self Timer','10',modeNumber)
+        so.setCameraOption('Self Timer','10')
+        tb.confirmSettingMode('Self Timer','10',modeNumber)
         tb.captureAndCheckPicCount('single',11)
