@@ -12,17 +12,19 @@ import sys
 import util 
 import unittest
 
-a          = util.Adb()
-sm         = util.SetCaptureMode()
-tb         = util.TouchButton()
-so         = util.SetOption()
-modeNumber = util.ModeNumber['panorama']
+a           = util.Adb()
+sm          = util.SetCaptureMode()
+tb          = util.TouchButton()
+so          = util.SetOption()
+modeNumber  = util.ModeNumber['panorama']
+confirmMode = util.ConfirmMode
 
 class CameraTest(unittest.TestCase):
     def setUp(self):
         super(CameraTest,self).setUp()
         a.setUpDevice()
         sm.switchCaptureMode('Panorama')   # change panorama mode
+        tb.confirmCameraMode(confirmMode['Panorama'])
 
     def tearDown(self):
         super(CameraTest,self).tearDown()
@@ -40,7 +42,8 @@ class CameraTest(unittest.TestCase):
         4.Touch shutter button to capture picture
         '''
         # step 2
-        so.setCameraOption('Exposure','0',modeNumber)
+        so.setCameraOption('Exposure','0')
+        tb.confirmSettingMode('Exposure','0',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('smile',2)
 
@@ -56,7 +59,8 @@ class CameraTest(unittest.TestCase):
         '''
 
         # step 2
-        so.setCameraOption('Exposure','3',modeNumber)
+        so.setCameraOption('Exposure','3')
+        tb.confirmSettingMode('Exposure','3',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('smile',2)
 
@@ -72,7 +76,8 @@ class CameraTest(unittest.TestCase):
         '''
 
         # step 2
-        so.setCameraOption('Exposure','6',modeNumber)
+        so.setCameraOption('Exposure','6')
+        tb.confirmSettingMode('Exposure','6',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('smile',2)
 
@@ -88,7 +93,8 @@ class CameraTest(unittest.TestCase):
         '''   
 
         # step 2
-        so.setCameraOption('Exposure','-3',modeNumber)
+        so.setCameraOption('Exposure','-3')
+        tb.confirmSettingMode('Exposure','-3',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('smile',2)
 
@@ -104,7 +110,8 @@ class CameraTest(unittest.TestCase):
         '''   
 
         # step 2
-        so.setCameraOption('Exposure','-6',modeNumber)
+        so.setCameraOption('Exposure','-6')
+        tb.confirmSettingMode('Exposure','-6',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('smile',2)
 
@@ -119,7 +126,8 @@ class CameraTest(unittest.TestCase):
         # step 1
 
         # step 2
-        so.setCameraOption('Geo Location','on',modeNumber)
+        so.setCameraOption('Geo Location','on')
+        tb.confirmSettingMode('Geo Location','on',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('smile',2)
 
@@ -135,7 +143,8 @@ class CameraTest(unittest.TestCase):
 
 
         # step 2
-        so.setCameraOption('Geo Location','off',modeNumber)
+        so.setCameraOption('Geo Location','off')
+        tb.confirmSettingMode('Geo Location','off',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('smile',2)
 
@@ -151,7 +160,8 @@ class CameraTest(unittest.TestCase):
         """
 
         # step 2
-        so.setCameraOption('ISO','iso-auto',modeNumber)
+        so.setCameraOption('ISO','iso-auto')
+        tb.confirmSettingMode('ISO','iso-auto',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('smile',2)
 
@@ -166,7 +176,8 @@ class CameraTest(unittest.TestCase):
         """
 
         # step 2
-        so.setCameraOption('ISO','iso-100',modeNumber)
+        so.setCameraOption('ISO','iso-100')
+        tb.confirmSettingMode('ISO','iso-100',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('smile',2)
 
@@ -181,7 +192,8 @@ class CameraTest(unittest.TestCase):
         """
 
         # step 2
-        so.setCameraOption('ISO','iso-200',modeNumber)
+        so.setCameraOption('ISO','iso-200')
+        tb.confirmSettingMode('ISO','iso-200',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('smile',2)
 
@@ -197,7 +209,8 @@ class CameraTest(unittest.TestCase):
         """
 
         # step 2
-        so.setCameraOption('ISO','iso-400',modeNumber)
+        so.setCameraOption('ISO','iso-400')
+        tb.confirmSettingMode('ISO','iso-400',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('smile',2)
 
@@ -212,6 +225,7 @@ class CameraTest(unittest.TestCase):
         """
 
         # step 2
-        so.setCameraOption('ISO','iso-800',modeNumber)
+        so.setCameraOption('ISO','iso-800')
+        tb.confirmSettingMode('ISO','iso-800',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('smile',2)  
