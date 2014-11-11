@@ -332,7 +332,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         """
         so.setCameraOption('Hints','on')
-        tb.confirmSettingMode('Hints','on')
+        #tb.confirmSettingMode('Hints','on')
         # step 4~5
         tb.captureAndCheckPicCount('longclick',3)          
 
@@ -346,7 +346,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         """
         so.setCameraOption('Hints','off')
-        tb.confirmSettingMode('Hints','off')
+        #tb.confirmSettingMode('Hints','off')
         # step 4~5
         tb.captureAndCheckPicCount('longclick',3)     
 
@@ -616,7 +616,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         """
         so.setCameraOption('Face Detection','off')
-        tb.confirmSettingMode('Geo Location','off')
+        tb.confirmSettingMode('Face Detection','off')
         # step 4~5
         tb.captureAndCheckPicCount('longclick',3)
 # Test case 
