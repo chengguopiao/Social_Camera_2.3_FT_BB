@@ -236,7 +236,7 @@ class CameraTest(unittest.TestCase):
 
         # step 2
         so.setCameraOption('Geo Location','on')
-        tb.confirmSettingMode('Geo Loaction','on',modeNumber)
+        tb.confirmSettingMode('Geo Location','on',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('single',2)  
 
@@ -251,6 +251,6 @@ class CameraTest(unittest.TestCase):
         
         # step 2
         so.setCameraOption('Geo Location','off')
-        tb.confirmSettingMode('Geo Loaction','off',modeNumber)
+        tb.confirmSettingMode('Geo Location','off',modeNumber)
         # step 4~5
         tb.captureAndCheckPicCount('single',2)  
