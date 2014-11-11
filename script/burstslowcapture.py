@@ -27,7 +27,7 @@ class CameraTest(unittest.TestCase):
         super(CameraTest,self).setUp()
         AD.setUpDevice(False)
         sm.switchCaptureMode('Burst','Slow')
-        tb.confirmCameraMode(confirmMode['Burst'])
+        #tb.confirmCameraMode(confirmMode['Burst'])
 
     def tearDown(self):
         super(CameraTest,self).tearDown()
