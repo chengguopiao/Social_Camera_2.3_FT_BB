@@ -342,7 +342,7 @@ class CameraTest(unittest.TestCase):
         """
         # Step 2  Set Hints ON
         so.setCameraOption('Hints','on')
-        tb.confirmSettingMode('Hints','on')
+        #tb.confirmSettingMode('Hints','on')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('single',2)
 
@@ -358,7 +358,7 @@ class CameraTest(unittest.TestCase):
         """
         # Step 2  Set Hints OFF
         so.setCameraOption('Hints','off')
-        tb.confirmSettingMode('Hints','off')
+        #tb.confirmSettingMode('Hints','off')
         # Step 3 Touch shutter button to capture picture and confirm picture count + 1.
         tb.captureAndCheckPicCount('single',2)
 
