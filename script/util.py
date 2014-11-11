@@ -405,10 +405,10 @@ class SetOption():
                 break
         if not flag:
             for j in range (0,5):
-            if d(text = optiontext).wait.gone(timeout = 2000):
-                self._slideSettingListDown()
-            else :
-                break
+                if d(text = optiontext).wait.gone(timeout = 2000):
+                    self._slideSettingListDown()
+                else :
+                    break
         # Get target option index
         newoptiontext = optiontext.replace(' ', '_')
         targetindex  = DICT_OPTION_NAME[newoptiontext].index(option)
