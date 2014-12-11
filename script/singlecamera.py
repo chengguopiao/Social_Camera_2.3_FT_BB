@@ -19,7 +19,7 @@ class CameraTest(unittest.TestCase):
         super(CameraTest,self).setUp()
         a.setUpDevice()
         sm.switchCaptureMode('Single')
-        tb.confirmCameraMode(confirmMode['Single'])
+        #tb.confirmCameraMode(confirmMode['Single'])
 
     def tearDown(self):
         super(CameraTest,self).tearDown()
